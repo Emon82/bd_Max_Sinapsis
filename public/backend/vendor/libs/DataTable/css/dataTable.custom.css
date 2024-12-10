@@ -1,0 +1,88 @@
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    padding: 0px;
+}
+
+.dataTables_wrapper,.dataTables_wrapper .row{
+    width: 100%;
+    margin: 0px;
+    padding: 12px 0px;
+}
+
+.dataTables_wrapper .dataTables_length label,.dataTables_wrapper .dataTables_filter label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.dataTables_wrapper .dataTables_filter label input{
+    padding: .4375rem .875rem;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.53;
+    color: #697a8d;
+    appearance: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d9dee3;
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+
+.dataTables_wrapper .dataTables_length label .custom-select{
+    padding: .4375rem 1.875rem .4375rem .875rem;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.53;
+    color: #697a8d;
+    appearance: none;
+    background-color: #fff;
+    background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
+    background-repeat: no-repeat;
+    background-position: right .875rem center;
+    background-size: 17px 12px;
+    border: 1px solid #d9dee3;
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+}
+
+table.dataTable.no-footer{
+    border-bottom: 1px solid #697a8d3b;
+}
+
+.dataTables_wrapper table tr{
+    border-top: 1px solid #697a8d3b;
+    border-bottom: 1px solid #697a8d3b;
+    background: transparent;
+}
+
+.dataTables_wrapper table th{
+    padding: 10px 14px;
+}
+
+table.dataTable thead th, table.dataTable tfoot th,table.dataTable tbody td{
+    padding: 16px 18px !important;
+}
+
+.dataTables_info{
+    margin-left: 18px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.paging_full_numbers{
+    margin-right: 18px;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.dataTables_paginate ul{
+    margin-bottom: 0px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+    background: transparent !important;
+    border:1px solid transparent;
+}

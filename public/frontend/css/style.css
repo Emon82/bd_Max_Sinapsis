@@ -1,0 +1,1667 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+strong,
+i,
+ol,
+ul,
+li,
+form,
+label,
+footer,
+header,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background: #F6F5FA;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  --text-color: #555;
+  --Poppins: "Poppins", sans-serif;
+  --Jost: "Jost", sans-serif;
+}
+main{
+  overflow-x: hidden;
+}
+
+/* =================== navbar start hare ================== */
+/*
+nav{
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: #FFF;
+  width: 100%;
+  z-index: 1111;
+} */
+.navbar--wrapper {
+  padding: 30px 0;
+}
+.navbar--main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar--logo--manu {
+  display: flex;
+  column-gap: 186px;
+}
+.nav--logo--img{
+  width: 264px;
+  height: 46px;
+}
+.nav--logo--img img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.navbar--menu ul{
+  display: flex;
+  column-gap: 32px;
+}
+.drop--down{
+  height: 16px;
+  width: 16px;
+}
+.drop--down svg{
+  height: 100%;
+  width: 100%;
+  transition: all linear 0.3s;
+}
+.navbar--menu ul li a{
+  color:  #141414;
+  font-family: var(--Poppins);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+  transition: all linear 0.3s;
+}
+
+.navbar--menu ul li a:hover{
+  color: #E11594;
+}
+.navbar--menu ul li a:hover svg path{
+  fill: #E11594;
+  transition: all linear 0.3s;
+}
+
+.navbar--btn a{
+  padding: 10px 24px;
+  border-radius: 36px;
+  background:  #E11594;
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+}
+
+.dropDownMenu{
+  display: flex;
+  column-gap: 6px;
+}
+.drop--position{
+  position: relative;
+}
+.more--drop--down {
+  padding: 10px;
+  height: 120px;
+  background-color: #F6F5FA;
+  position: absolute;
+  bottom: -133px;
+  left: -45px;
+  z-index: 44;
+  overflow: auto;
+  /* width: 150px; */
+  display: flex;
+  justify-content: center;
+  min-width: 150px;
+  width: fit-content;
+}
+.more--drop--down::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+.more--drop--down::-webkit-scrollbar-thumb {
+  background-color: #E11594;
+  border-radius: 4px;
+  height: 30px;
+}
+
+.more--drop--down ul{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.more--drop--down.active{
+  display: none;
+}
+
+
+.phone--navbar{
+  display: none;
+}
+.harmburg--icon{
+  display: none;
+  cursor: pointer;
+}
+/* =================== navbar End hare ================== */
+
+
+/* =================== banner start hare ================== */
+.banner--main {
+  padding: 120px 0 230px 110px;
+  background: url(../images/banner.png) no-repeat;
+  background-size: contain;
+  position: relative;
+  z-index: 33;
+}
+.banner--inner{
+  position: relative;
+}
+.content--first--btn a {
+  padding: 5px 36px 5px 10px;
+  border-radius: 36px;
+  background: linear-gradient(90deg, #E11594 0%, rgba(225, 21, 148, 0.80) 53.78%, rgba(225, 21, 148, 0.20) 100%);
+  color: var(--60-background-white, #FFF);
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+  cursor: default;
+}
+
+.content--first--text{
+  margin-top: 42px;
+}
+.content--first--text h1{
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+  width: 888px;
+}
+.content--first--text p{
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  margin-top: 24px;
+  width: 888px;
+}
+.content--last--btn{
+  padding-top: 42px;
+}
+.content--last--btn a{
+  padding: 10px 24px;
+  border-radius: 36px;
+  background:  #E11594;
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+}
+
+.banner--down--content--one {
+	display: flex;
+	column-gap: 4px;
+	align-items: baseline;
+}
+.banner--down--content--one h5 {
+  color: #141414;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 164%;
+}
+.banner--down--content--one--svg {
+  width: 24px;
+  height: 24px;
+}
+.banner--down--content--one--svg svg{
+  height: 100%;
+  width: 100%;
+}
+.banner--down--content {
+  display: flex;
+  column-gap: 24px;
+  position: relative;
+  bottom: 80px;
+  z-index: 1;
+}
+
+.banner--down--frame {
+  position: absolute;
+  right: 2px;
+  bottom: 34px;
+  z-index: 34;
+  width: 230px;
+  height: 230px;
+}
+.banner--down--frame--img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: nahian 6s infinite linear;
+}
+@keyframes nahian{
+  100% {transform: rotate(360deg);}
+}
+
+
+.banner--down--frame img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.banner--down--frame--text {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  right: 62px;
+  bottom: 64px;
+  z-index: 35;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner--down--frame--text h4{
+  color: #E11594;
+  font-family: Poppins;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.96px;
+}
+/* =================== banner end hare ================== */
+
+/* =================== ourvalue start hare ================== */
+.our--value--main{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.our--value--wrapper {
+	padding: 160px 0 130px 0;
+}
+.our--value--main--content h5{
+  color:  #141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+  margin-top: 34px;
+}
+.our--value--main--content h5 span{
+  color:  #E11594;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+.our--value--main--content p{
+  color:  #5A5C5F;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  width: 784px;
+}
+/* .our--value--main--content{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 24px;
+  align-items: center;
+} */
+.our--value--main--content h6{
+  color:  #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.32px;
+}
+
+.our--value--main--wrapper{
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+/* .our--value--item{
+  padding: 32px 102px 32px 0;
+  border-right: 1px solid #D1D1D1;
+  border-bottom: 1px solid #D1D1D1;
+}
+.our--value--item:nth-child(even){
+  border-right: none;
+  padding-left: 27px;
+}
+.our--value--item:last-child(odd){
+  border-bottom: none;
+} */
+
+    .our--value--item {
+      padding: 32px 102px 32px 0;
+      border-right: 1px solid #D1D1D1;
+      border-bottom: 1px solid #D1D1D1;
+    }
+
+    .our--value--item:nth-child(even) {
+      border-right: none;
+      padding-left: 27px;
+    }
+
+    .last-child-odd {
+      border-bottom: none;
+    }
+
+.our--value--item h6{
+  color:  #141414;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.48px;
+  margin-bottom: 24px;
+}
+.our--value--item p{
+  color:  #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+}
+/* =================== ourvalue End hare ================== */
+
+
+/* =================== our Process Start hare ================== */
+.our--process--wrapper{
+  padding-bottom: 0px;
+}
+.our--process--main{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+}
+.our--process--heading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 93px;
+}
+.our--process--heading--text{
+  margin-top: 34px;
+}
+.our--process--heading--text h4{
+  color:  #141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+.our--process--heading--text h4 span{
+  color: #E11594;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+.our--process--item {
+  background: url(../images/ourServiceBackground.png) no-repeat;
+  background-size: 100% 100%;
+  padding-top: 24px;
+  padding-left: 24px;
+  padding-bottom: 143px;
+  padding-right: 8px;
+}
+.our--process--item--svg{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #CC77ED;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.our--process--item--svg.second{
+  background-color:  #9AB8FF;
+}
+.our--process--item--svg.third{
+  background-color:  #72EDFF;
+}
+.our--process--item--svg.fourth{
+  background-color:  #A452D3;
+}
+.our--process--item--svg.fifth{
+  background-color:  #FF94F7;
+}
+.our--process--item--svg--photo{
+  width: 36px;
+  height: 36px;
+}
+.our--process--item--svg--photo svg{
+  height: 100%;
+  width: 100%;
+}
+.our--process--item--text h5{
+  color:  #141414;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.4px;
+  width: 309px;
+  margin: 24px 0;
+}
+.our--process--item--text p{
+  color:  #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 164%;
+}
+/* =================== our Process End hare ================== */
+
+/* =================== why chose us start hare ================== */
+.why--chose--us--inner {
+  background: url(../images/whyChoseUSbackground.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 118px 0;
+  margin-top: 160px;
+}
+.why--chose--us--inner--two{
+  background: url(../images/whyChoseUSbackground.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 118px 0;
+}
+.why--chose--us--main{
+  display: flex;
+  flex-direction: column;
+  row-gap: 39px;
+  justify-content: center;
+  align-items: center;
+}
+
+.why--chose--us--heading h4{
+  color:  #141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+  text-align: center;
+}
+.why--chose--us--heading h4 span{
+  color:  #E11594;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+.why--chose--us--heading p{
+  color: #5A5C5F;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  width: 1235px;
+  margin-top: 24px;
+}
+
+.why--chose--us--btn a{
+  padding: 10px 24px;
+  border-radius: 36px;
+  background:  #E11594;
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+}
+/* =================== why chose us end hare ================== */
+
+
+/* =================== ready to strat strat hare ================== */
+.readyToStart--wrapper{
+  padding: 160px 0 0 0;
+}
+
+.readyToStart--main{
+  display: flex;
+  column-gap: 45px;
+  align-items: center;
+}
+.readyToStart--left{
+  width: 58%;
+}
+.readyToStart--left--content h4{
+  color:  #141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+  margin-top: 64px;
+  width: 100%;
+}
+.readyToStart--left--content p{
+  color:  #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.readyToStart--left--content a{
+  padding: 10px 36px;
+  border-radius: 36px;
+  background:  #E11594;
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+}
+
+.readyToStart--right {
+  width: 50%;
+  height: 583px;
+}
+.readyToStart--right img{
+  width: 100%;
+  height: 100%;
+}
+/* =================== ready to start end hare ================== */
+
+
+
+/* =================== map strat hare ================== */
+
+.map--wrapper{
+  padding: 162px 0;
+}
+#map {
+  height: 650px;
+}
+.map--heading{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.map--header h3{
+  color:  #141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+  margin-top: 34px;
+  margin-bottom: 64px;
+}
+.map--header h3 span{
+  color:#E11594;
+}
+/* =================== map ENd hare ================== */
+
+
+/* =================== gateway strat hare ================== */
+
+.gateWay--wrapper{
+  padding: 160px 0;
+}
+
+.gateWay--heading{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+}
+.gateWay--header--text h4{
+  color:  #141414;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+.gateWay--header--text h4 span{
+  color:  #E11594;
+}
+.gateWay--header--text h5{
+  color: #141414;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+
+.gateWay--item--wrapper{
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 55px;
+}
+.gateWay--item{
+  background: url(../images/trustAndSecBack.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 32px 32px 177px 32px;
+  width: 470px;
+}
+.gateWay--item--svg{
+  width: 84px;
+  height: 84px;
+  border-radius: 16px;
+  background: #E11594;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gateWay--item--svg--logo{
+  width: 36px;
+  height: 36px;
+}
+.gateWay--item--svg--logo svg{
+  height: 100%;
+  width: 100%;
+}
+.gateWay--item--header{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 23px;
+  position: relative;
+  padding-bottom: 50px;
+}
+.gateWay--item--header::after{
+  position: absolute;
+  content: '';
+  height: 1px;
+  width: 100%;
+  background: #D1D1D1;
+  left: 0;
+  bottom: 0;
+}
+.gateWay--item--header h5{
+  color:  #141414;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.4px;
+  width: 345px;
+}
+.gateWay--item--header h6{
+  color: #141414;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.4px;
+}
+.gateWay--item p{
+  color:  #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  margin-top: 24px;
+}
+/* =================== gateway ENd hare ================== */
+
+
+/* =================== faq strat hare ================== */
+.faq--main{
+  background: url(../images/faqBackground.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 86px 183px 100px 182px;
+  margin-bottom: 160px;
+}
+.faq--heading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 34px;
+  margin-bottom: 48px;
+}
+
+.accordion--text h5{
+  color:  #141414;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.48px;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border-radius: 24px !important;
+}
+.accordion-item {
+  background: #F6F5FA !important;
+  border-radius: 24px !important;
+}
+
+.accordion-header {
+  border-radius: 24px !important;
+}
+.accordion-item .accordion-button {
+  background: #F6F5FA;
+  border-radius: 24px !important;
+}
+.accordion-button:not(.collapsed) {
+  background: #F6F5FA;
+  border-radius: 24px !important;
+}
+.accordion-button::after {
+  background-image: url(../images/BackgroundPlusic.jpg) !important;
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+  background-size: 100% 100%;
+}
+
+.faq--btn{
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+.faq--btn a{
+  padding: 10px 36px;
+  border-radius: 36px;
+  background:  #E11594;
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+}
+/* =================== faq End hare ================== */
+
+
+/* =================== footer start hare ================== */
+.footer--wrapper{
+  padding: 110px 0 24px 0;
+  background: #141414;
+}
+.footer--main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer--header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer--header h4{
+  color:  #FFF;
+  font-family: Jost;
+  font-size: 32px;
+  font-weight: 400;
+}
+.footer--header h4 span{
+  font-weight: 600;
+}
+.footer--header p{
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+  margin-top: 64px;
+  margin-bottom: 32px;
+}
+
+.footer--search form{
+  width: 710px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+  border-radius: 24px;
+  padding: 8px 8px 8px 24px;
+}
+.footer--search input{
+  height: 100%;
+  width: 80%;
+  border-radius: 24px;
+  border: none;
+  outline: none;
+  color: #BABABA;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 164%;
+}
+.footer--search button{
+ padding: 17px 35px;
+  border-radius: 22px;
+  background:  #E11594;
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+  border: none;
+}
+
+.footer--menu{
+  margin-top: 32px;
+}
+.footer--menu ul{
+  display: flex;
+  column-gap: 32px;
+}
+.footer--menu ul li a{
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+  transition: all linear 0.3s;
+}
+.footer--menu ul li a:hover{
+  color: #E11594;
+}
+.footer--heading p{
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.4px;
+  margin-top: 25px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.footer--socoal--icons{
+  display: flex;
+  column-gap: 16px;
+  justify-content: center;
+}
+.footer--social--icon{
+  width: 46px;
+  height: 46px;
+  background-color: #E11594;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer--social--icon--svg{
+  width: 24px;
+  height: 24px;
+}
+.footer--social--icon--svg svg{
+  height: 100%;
+  width: 100%;
+}
+.footer--last--header{
+  margin-top: 97px;
+}
+.footer--last--header p{
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 164%;
+}
+/* ======================================== index.html end hare ========================================  */
+
+
+
+
+
+/* ======================================== banner.html strat hare ========================================  */
+
+
+
+/* about banner strat hare */
+.about--us--banner--inner{
+  padding: 117px 0 117px 110px;
+  background:  url(../images/aboutUsBanner.png) no-repeat center;
+  background-size: 100% 100%;
+  position: relative;
+}
+
+.content--first--text h2{
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+
+.banner--down--frame--two {
+  width: 230px;
+  height: 230px;
+  position: absolute;
+  right: 5px;
+  bottom: 0px;
+}
+.banner--down--frame--two img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+/* banner end hare */
+
+/* our mission strat hare */
+.readyToStart--wrapper.aboutAdjust {
+  margin: 40px 0;
+}
+.readyToStart--left--content--aboutPage h5{
+  color: #141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+  margin-top: 34px;
+}
+.readyToStart--left--content--aboutPage h5 span{
+  color: #E11594;
+}
+.readyToStart--left--content--aboutPage p{
+  margin-top: 24px;
+  margin-bottom: 32px;
+  color:  #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  width: 750px;
+}
+
+.readyToStart--left--content--aboutPage a {
+  padding: 10px 36px;
+  border-radius: 36px;
+  background: #E11594;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+}
+
+/* our mission end hare */
+
+
+/* our vision start hare */
+.readyToStart--main.ourVision{
+  display: flex;
+  flex-direction: row-reverse;
+}
+/* our vision end hare */
+
+/* why chose start hare */
+.why--chose--us--inner--about{
+  background: url(../images/whyChoseUSbackground.png) no-repeat;
+  background-size: 100%;
+  padding: 118px 0;
+}
+
+.why--chose--us--inner--third{
+  background: url(../images/whyChoseUSbackground.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 118px 0;
+  margin-top: 160px;
+}
+/* why chose end hare */
+
+/* ready to start start hare */
+.readyToStart--left--content--aboutPage h6{
+  color:  #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.32px;
+  margin: 32px 0;
+}
+.readyToStart--left--content--aboutPage h6 span{
+  color: #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+}
+/* ready to start end hare */
+
+/* faq start hare */
+.faq--wrapper--three{
+  padding-top: 160px;
+}
+/* faq end hare */
+
+
+/* ======================================== banner.html end hare ========================================  */
+
+
+
+
+/* ======================================== faq.html strat hare ========================================  */
+.faq--banner--inner{
+  padding: 240px 0 239px 110px;
+  background: url(../images/aboutUsBanner.png) no-repeat center;
+  background-size: 100% 100%;
+  position: relative;
+}
+.faq--first--text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.faq--first--text h2{
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+.faq--first--text p{
+  margin-top: 24px;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+}
+
+
+.why--chose--us--inner--third.faqPage {
+  margin-top: 150px;
+}
+/* ======================================== faq.html End hare ========================================  */
+
+
+/* ======================================== contract us html strat hare ========================================  */
+
+
+/* contract Us start */
+.contract--us--wrapper{
+  padding: 20px 0 160px 0;
+}
+
+.contract--us--main{
+  background: url(../images/contractUsbg.png) no-repeat;
+  background-size: 100% 100%;
+  padding: 110px 64px 140px 64px;
+}
+.contract--us--inner{
+  display: flex;
+  column-gap: 186px;
+  align-items: center;
+  align-items: center;
+}
+.contract--us--left h4{
+  color: #141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+  margin-bottom: 24px;
+}
+.contract--us--left h4 span{
+  color: #E11594;
+}
+.contract--us--left p{
+  color: #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  width: 423px;
+}
+
+
+
+.contract--us--right p{
+  color:  #5A5C5F;
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+  width: 783px;
+  margin-bottom: 24px;
+}
+
+.contract--us--right--wrapper{
+  display: flex;
+  column-gap: 24px;
+}
+.contract--us--right--item{
+  padding: 24px 24px 27px 24px;
+  border-radius: 16px;
+  background: #141414;
+  width: 334px;
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+}
+.contract--us--right--item--svg{
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contract--us--right--item--svg--picture{
+  width: 18px;
+  height: 18px;
+  display: flex;
+}
+.contract--us--right--item--svg--picture svg{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.contract--us--right--item--content h5{
+  color: #FFF;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 164%;
+}
+.contract--us--right--item--content h6{
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+}
+/* contract Us end */
+
+/* drop line strat */
+.drop--a--line--wrapper{
+  padding-bottom: 160px;
+}
+
+.drop--a--line--wrapper--main{
+  display: flex;
+  column-gap: 56px;
+}
+.drop--a--line--left{
+  width: 622px;
+  height: 516px;
+}
+.drop--a--line--left img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.drop--a--line--right{
+  padding: 56px;
+  border-radius: 24px;
+  border: 1px solid #D1D1D1;
+  background:  #FFF;
+}
+
+.drop--a--line--content h5{
+  color: #141414;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+.first--inputs{
+  margin-top: 24px;
+  display: flex;
+  column-gap: 24px;
+}
+.first--inputs input{
+  padding: 23px 10px 23px 24px;
+  border-radius: 16px;
+  border: 1px solid #D1D1D1;
+  background: #F6F5FA;
+  outline: none;
+  width: 353px;
+}
+.input--textflield{
+  margin-top: 24px;
+}
+.input--textflield textarea{
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #D1D1D1;
+  outline: none;
+  background: #F6F5FA;
+  resize: none;
+  width: 100%;
+  height: 138px;
+}
+.input--textflield--btn{
+  margin-top: 24px;
+}
+.input--textflield--btn button{
+  padding: 23px 0;
+  border: none;
+  color:  #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+  width: 100%;
+  border-radius: 16px;
+  background: #E11594;
+}
+/* drop line End */
+
+/* ======================================== contract us html End hare ========================================  */
+
+
+/* ======================================== Preceptor html start hare ========================================  */
+.map--wrapper--three {
+  padding: 60px 0;
+}
+/* ======================================== Preceptor html End hare ========================================  */
+
+
+/* ======================================== Become A Preceptor html start hare ========================================  */
+
+/* become a preceptor banner */
+.faq--banner--inner--become {
+  padding: 220px 0 239px 110px;
+  background: url(../images/becomeAprecptorBackground.png) no-repeat center;
+  background-size: 100% 100%;
+  position: relative;
+}
+.faq--first--text h6{
+  color:  #FFF;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+}
+.faq--first--text a{
+  padding: 10px 24px;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+  border-radius: 36px;
+  background:  #E11594;
+  margin-top: 42px;
+}
+/* become a preceptor banner */
+
+
+/* become a preceptor what you will get */
+.what--will--get--wrapper{
+  padding: 160px 0;
+}
+.what--will--get--content--wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.what--will--get--content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 34px;
+}
+.what--will--get--content h5{
+  color: #141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+.what--will--get--content h5 span{
+  color: #E11594;
+}
+.what--will--get--content p{
+  color:  #5A5C5F;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  text-transform: capitalize;
+  width: 974px;
+  margin-top: 24px;
+}
+.what--will--get--content p span{
+  color: #141414;
+  font-weight: 500;
+}
+
+.what--will--get--content--item--wrapper{
+  margin-top: 102px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 102px;
+  row-gap: 234px;
+}
+.what--will--get--content--item{
+  position: relative;
+  width: 709px;
+}
+.what--will--get--content--img{
+  width: 100%;
+  height: 583px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all linear 0.3s;
+  cursor: pointer;
+}
+
+.what--will--get--content--img img{
+  height: 100%;
+  width: 100%;
+  object-fit: 100% 100%;
+}
+.what--will--get--content--img img:hover{
+  scale: 105%;
+  transition: all linear 0.3s;
+}
+.what--will--get--texts {
+  width: 613px;
+  padding: 32px 57px 36px 57px;
+  background: url(../images/whatYougetBack.png) no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  bottom: -132px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.what--will--get--texts h3{
+  color: var(--Text-Heading, #141414);
+  text-align: center;
+  font-family: Poppins;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+  display: flex;
+  justify-content: center;
+}
+.what--will--get--texts p{
+  margin-top: 24px;
+  color: #5A5C5F;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+}
+/* what we get end */
+
+/* become a preceptor form */
+.becomeA--preceptor--wrapper{
+  padding: 160px 0;
+}
+.becomeA--preceptor--main{
+  display: flex;
+  align-items: center;
+  column-gap: 153px;
+}
+.readyToStart--left--content--become h5{
+  color:#141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+  width: 658px;
+  margin-top: 34px;
+}
+.readyToStart--left--content--become h5 span{
+  color: #E11594;
+}
+.readyToStart--left--content--become p{
+  color:  #5A5C5F;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  width: 665px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+.readyToStart--left--content--become a{
+  padding: 10px 36px;
+  border-radius: 36px;
+  background: #E11594;
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 164%;
+  text-transform: capitalize;
+}
+.form--div{
+  width: 709px;
+  height: 583px;
+}
+.form--div img{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+/* become a preceptor form */
+
+
+
+
+/* ======================================== Become A Preceptor end hare ========================================  */
+
+
+
+/* ======================================== student form start hare ========================================  */
+.student--banner--inner{
+  padding: 220px 0 239px 110px;
+  background: url(../images/studentBackground.png) no-repeat center;
+  background-size: 100% 100%;
+  position: relative;
+}
+
+.let--us--help--you--main{
+  background: url(../images/letUsHelpBack.png) no-repeat center;
+  background-size: 100% 100%;
+  padding: 100px 230px 100px 230px;
+  margin-top: 160px;
+}
+.let--us--help--you--content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.let--us--help--you--content h3{
+  color: #141414;
+  font-family: Poppins;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 132%;
+  letter-spacing: -0.64px;
+}
+.let--us--help--you--content h3 span{
+  color: #E11594;
+}
+.let--us--help--you--content p{
+  color: #5A5C5F;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  margin-top: 24px;
+}
+.let--us--help--you--inner{
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+/* ======================================== student form End hare ========================================  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hero--marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 32px;
+  width: 80%;
+}
+.hero--marquee .slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-animation: 40s slide infinite linear;
+  animation: 40s slide infinite linear;
+}
+@-webkit-keyframes slide {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+@keyframes slide {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.hero--marquee .slide .slide--item {
+  padding: 0 10px;
+  position: relative;
+}
+
+.hero--marquee:hover .slide {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
