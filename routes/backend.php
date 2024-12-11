@@ -19,33 +19,40 @@ use App\Http\Controllers\Web\Backend\CMS\LandingPage\LandingPageController;
 use App\Http\Controllers\Web\Backend\CMS\LandingPage\SuccessGuideController;
 use App\Http\Controllers\Web\Backend\CMS\ContactUsPage\ContactUsPageController;
 use App\Http\Controllers\Web\Backend\ServiceController;
+use App\Http\Controllers\Web\Backend\ProjectController;
+use App\Http\Controllers\Web\Backend\PortfolioController;
 
 Route::middleware('auth')->group(function () {
 
-    // Route to view services
+    // Route For services
  Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
 Route::post('services/store', [ServiceController::class, 'store'])->name('services.store');
-Route::get('/services/status/{id}', [ServiceController::class, 'status'])->name('services.status');
+Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('edit');
+Route::put('/update/{id}', [ServiceController::class, 'update'])->name('services.update'); 
 Route::delete('/destroy/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
-Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('edit');  // Show edit form
-Route::put('/update/{id}', [ServiceController::class, 'update'])->name('services.update'); // Update a service
+
+ // Route For Projects
+
+Route::get('/projects-list', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/create-project', [ProjectController::class, 'create'])->name('projects.create');
+Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
+Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+Route::put('/update-project/{id}', [ProjectController::class, 'update'])->name('projects.update');
+Route::delete('/remove-project/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+
+
+ // Route For Portfolio
+ Route::get('/get-all-portfolio', [PortfolioController::class, 'index'])->name('portfolios.index');
+ Route::get('/create-portfolio', [PortfolioController::class, 'create'])->name('portfolios.create');
+ Route::post('/store-portfolio', [PortfolioController::class, 'store'])->name('portfolios.store');
+ Route::get('/update-portfolio/{id}', [PortfolioController::class, 'edit'])->name('portfolios.edit');
+ Route::put('/update-portfolio/{id}', [PortfolioController::class, 'update'])->name('portfolios.update');
+ Route::delete('/delete-portfolio/{id}', [PortfolioController::class, 'destroy'])->name('portfolios.destroy');
 
 
 
-// Route::get('', [ServiceController::class, 'index'])->name('index');
-// Route::get('create', [ServiceController::class, 'create'])->name('create');
-// Route::post('store', [ServiceController::class, 'store'])->name('store');
-// Route::get('edit/{id}', [ServiceController::class, 'edit'])->name('edit');
-// Route::put('update/{id}', [ServiceController::class, 'update'])->name('update');
-// Route::delete('destroy/{id}', [ServiceController::class, 'destroy'])->name('destroy');
 
-
-
-
-
-Route::get('/projects', [ServiceController::class, 'index'])->name('projects.index');
-Route::get('/portfolios', [ServiceController::class, 'index'])->name('portfolios.index');
 Route::get('/creativity', [ServiceController::class, 'index'])->name('creativity.index');
 Route::get('/contracts', [ServiceController::class, 'index'])->name('cms.contact');
 
