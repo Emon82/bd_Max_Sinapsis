@@ -55,7 +55,14 @@
                 columns: [
                     { data: 'DT_RowIndex', name: 'DT_RowIndex' },
                     { data: 'title_eess', name: 'title_eess' },
-                    { data: 'description_eess', name: 'description_eess' },
+                    { data: 'description_eess', name: 'description_eess',
+                         render: function (data, type, row) {
+        if (data && data.length > 5) {
+            return `<span title="${data}">${data.substring(0, 15)}...</span>`;
+        }
+        return data;
+             },
+                     },
                     {
                         data: 'action',
                         name: 'action',

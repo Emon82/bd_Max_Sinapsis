@@ -21,6 +21,9 @@ use App\Http\Controllers\Web\Backend\CMS\ContactUsPage\ContactUsPageController;
 use App\Http\Controllers\Web\Backend\ServiceController;
 use App\Http\Controllers\Web\Backend\ProjectController;
 use App\Http\Controllers\Web\Backend\PortfolioController;
+use App\Http\Controllers\Web\Backend\CreativityController;
+use App\Http\Controllers\Web\Backend\AboutController;
+use App\Http\Controllers\Web\Backend\ContractController;
 
 Route::middleware('auth')->group(function () {
 
@@ -52,10 +55,31 @@ Route::delete('/remove-project/{id}', [ProjectController::class, 'destroy'])->na
 
 
 
+// Route For Creativity
+Route::get('/creativity', [CreativityController::class, 'index'])->name('creativity.index');
+ Route::get('/create-creativity', [CreativityController::class, 'create'])->name('creativity.create');
+ Route::post('/store-creativity', [CreativityController::class, 'store'])->name('creativity.store');
+ Route::get('/update-creativity/{id}', [CreativityController::class, 'edit'])->name('creativity.edit');
+ Route::put('/update-creativity/{id}', [CreativityController::class, 'update'])->name('creativity.update');
+ Route::delete('/delete-creativity/{id}', [CreativityController::class, 'destroy'])->name('creativity.destroy');
 
-Route::get('/creativity', [ServiceController::class, 'index'])->name('creativity.index');
-Route::get('/contracts', [ServiceController::class, 'index'])->name('cms.contact');
 
+// Route For Abouts
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+ Route::get('/create-about', [AboutController::class, 'create'])->name('about.create');
+ Route::post('/store-creativity', [AboutController::class, 'store'])->name('about.store');
+ Route::get('/update-about/{id}', [AboutController::class, 'edit'])->name('about.edit');
+ Route::put('/update-about/{id}', [AboutController::class, 'update'])->name('about.update');
+ Route::delete('/delete-about/{id}', [AboutController::class, 'destroy'])->name('about.destroy');
+
+
+ // Route For Contacts
+// Route::get('/getcontact-address', [ContractController::class, 'index'])->name('contact.index');
+// Route::get('/create-contact', [ContractController::class, 'create'])->name('contact.create');
+// Route::post('/store-contact', [ContractController::class, 'store'])->name('contact.store');
+// Route::get('/update-contact-address/{id}', [ContractController::class, 'edit'])->name('contact.edit');
+// Route::put('/update-contact-address/{id}', [ContractController::class, 'update'])->name('contact.update');
+// Route::delete('/delete-contact/{id}', [ContractController::class, 'destroy'])->name('contact.destroy');
 
 
 

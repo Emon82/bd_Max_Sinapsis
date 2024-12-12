@@ -69,11 +69,18 @@
 
 
 <li class="menu-item {{ Request::routeIs('cms.contact') ? 'active' : '' }}">
-    <a class="menu-link" href="{{ route('cms.contact') }}">
+    <a class="menu-link" href="{{ route('about.index') }}">
         <i class="menu-icon tf-icons bx bxs-contact"></i>
         <div data-i18n="Layouts">Abouts</div>
     </a>
 </li>
+
+<!-- <li class="menu-item {{ Request::routeIs('cms.contact') ? 'active' : '' }}">
+    <a class="menu-link" href="{{ route('contact.index') }}">
+        <i class="menu-icon tf-icons bx bxs-contact"></i>
+        <div data-i18n="Layouts">Contract</div>
+    </a>
+</li> -->
 
 
         <!-- Layouts -->

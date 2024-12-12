@@ -28,32 +28,32 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="title_EESS">Title (EESS)</label>
+                            <label for="title_EESS">English Title</label>
                             <input type="text" name="title_EESS" class="form-control" placeholder="Enter Title" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="title_IINN">Title (IINN)</label>
+                            <label for="title_IINN">Spanish Title</label>
                             <input type="text" name="title_IINN" class="form-control" placeholder="Enter Title" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="sub_Title_EESS">Sub Title (EESS)</label>
+                            <label for="sub_Title_EESS">English Sub-Title</label>
                             <input type="text" name="sub_Title_EESS" class="form-control" placeholder="Enter Sub Title">
                         </div>
 
                         <div class="form-group">
-                            <label for="sub_Title_IINN">Sub Title (IINN)</label>
+                            <label for="sub_Title_IINN">Spanish Sub-Title</label>
                             <input type="text" name="sub_Title_IINN" class="form-control" placeholder="Enter Sub Title">
                         </div>
 
                         <div class="form-group">
-                            <label for="sub_desc_EESS">Description (EESS)</label>
+                            <label for="sub_desc_EESS">English Description</label>
                             <textarea name="sub_desc_EESS" class="form-control" rows="4" placeholder="Enter Description"></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="sub_desc_IINN">Description (IINN)</label>
+                            <label for="sub_desc_IINN">Spanish Description</label>
                             <textarea name="sub_desc_IINN" class="form-control" rows="4" placeholder="Enter Description"></textarea>
                         </div>
 
