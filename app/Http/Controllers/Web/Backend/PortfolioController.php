@@ -17,10 +17,13 @@ class PortfolioController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $portfolios = Portfolio::latest()->get();
+            $portfolios = Portfolio::latest()->get()->map(function ($portfolio, $key) {
+                $portfolio->DT_RowIndex = $key + 1; // Dynamically add row index
+                return $portfolio;
+            });
     
             return DataTables::of($portfolios)
-                ->addIndexColumn()  
+                ->addIndexColumn() // Automatically adds the DataTables index
                 ->addColumn('images', function ($data) {
                     if (isset($data->images) && count($data->images) > 0) {
                         // Get the last image
@@ -32,11 +35,12 @@ class PortfolioController extends Controller
     
                     return 'No Image';
                 })
+                ->addColumn('dynamic_id', function ($data) {
+                    return $data->DT_RowIndex; // Include the dynamic ID
+                })
                 ->rawColumns(['images'])
                 ->make(true);
         }
-    
-    
     
         return view('backend.layouts.portfolios.index');
     }

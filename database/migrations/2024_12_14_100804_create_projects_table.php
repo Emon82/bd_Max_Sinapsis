@@ -14,7 +14,7 @@ return new class extends Migration
         {
             Schema::create('projects', function (Blueprint $table) {
                 $table->id(); // Auto-incrementing primary key
-                // $table->string('serial_number')->index();
+                $table->integer('position')->nullable(); 
                 $table->string('title_EESS')->index();
                 $table->string('title_IINN')->index();
                 $table->string('location_EESS')->index();

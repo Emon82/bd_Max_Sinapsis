@@ -17,5 +17,6 @@ class Project extends Model
         'location_IINN',
         'description_EESS',
         'description_IINN',
+        'position',
     ];
 }

@@ -1,21 +1,21 @@
 @php
 
-    $system =\App\Models\SystemSetting::first();
+$system =\App\Models\SystemSetting::first();
 
- @endphp
+@endphp
 
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="{{ route('dashboard') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
-                 <a href="{{ route('home') }}">
-                     @if (!empty($system->logo))
-                         <img class="mb-3" width="200" height="24px" src="{{ asset($system->logo ?? "") }}" alt="logo"/>
-                     @else
-                         <img class="mb-3" width="200" height="24px" src="{{ asset('backend/img/logo/logo_F.png') }}" alt="logo"/>
-                     @endif
-                 </a>
+                <a href="{{ route('home') }}">
+                    @if (!empty($system->logo))
+                    <img class="mb-3" width="200" height="24px" src="{{ asset($system->logo ?? "") }}" alt="logo" />
+                    @else
+                    <img class="mb-3" width="200" height="24px" src="{{ asset('backend/img/logo/logo_F.png') }}" alt="logo" />
+                    @endif
+                </a>
             </span>
         </a>
 
@@ -40,42 +40,42 @@
 
 
         <li class="menu-item {{ Request::routeIs('clinical.*') ? 'active' : '' }}">
-    <a class="menu-link" href="{{ route('services.index') }}">
-        <i class="menu-icon tf-icons bx bx-store"></i>
-        <div data-i18n="Layouts">Services</div>
-    </a>
-</li>
+            <a class="menu-link" href="{{ route('services.index') }}">
+                <i class="menu-icon tf-icons bx bx-store"></i>
+                <div data-i18n="Layouts">Services</div>
+            </a>
+        </li>
 
 
-<li class="menu-item {{ Request::routeIs('cms.about-page.*')? 'active' : '' }}">
-    <a class="menu-link" href="{{ route('projects.index') }}">
-        <i class="menu-icon tf-icons bx bx-store"></i>
-        <div data-i18n="Layouts">Projects</div>
-    </a>
-</li>
-<li class="menu-item {{ Request::routeIs('cms.student-form') ? 'active' : '' }}">
-    <a class="menu-link" href="{{ route('portfolios.index') }}">
-        <i class="menu-icon tf-icons bx bx-male-female"></i>
-        <div data-i18n="Layouts">Portfolio</div>
-    </a>
-</li>
+        <li class="menu-item {{ Request::routeIs('cms.about-page.*')? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('projects.index') }}">
+                <i class="bx bx-user"></i>
+                <div data-i18n="Layouts">Projects</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::routeIs('cms.student-form') ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('portfolios.index') }}">
+                <i class="menu-icon tf-icons bx bx-male-female"></i>
+                <div data-i18n="Layouts">Portfolio</div>
+            </a>
+        </li>
 
-<li class="menu-item {{ Request::routeIs('cms.ideal-preceptor.preceptor') ? 'active' : '' }}">
-    <a class="menu-link" href="{{ route('creativity.index') }}">
-        <i class="menu-icon tf-icons bx bxs-shield-plus"></i>
-        <div data-i18n="Layouts">Creativity</div>
-    </a>
-</li>
+        <li class="menu-item {{ Request::routeIs('cms.ideal-preceptor.preceptor') ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('creativity.index') }}">
+                <i class="menu-icon tf-icons bx bxs-shield-plus"></i>
+                <div data-i18n="Layouts">Creativity</div>
+            </a>
+        </li>
 
 
-<li class="menu-item {{ Request::routeIs('cms.contact') ? 'active' : '' }}">
-    <a class="menu-link" href="{{ route('about.index') }}">
-        <i class="menu-icon tf-icons bx bxs-contact"></i>
-        <div data-i18n="Layouts">Abouts</div>
-    </a>
-</li>
+        <li class="menu-item {{ Request::routeIs('cms.contact') ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('about.index') }}">
+                <i class="menu-icon tf-icons bx bxs-contact"></i>
+                <div data-i18n="Layouts">Abouts</div>
+            </a>
+        </li>
 
-<!-- <li class="menu-item {{ Request::routeIs('cms.contact') ? 'active' : '' }}">
+        <!-- <li class="menu-item {{ Request::routeIs('cms.contact') ? 'active' : '' }}">
     <a class="menu-link" href="{{ route('contract.index') }}">
         <i class="menu-icon tf-icons bx bxs-contact"></i>
         <div data-i18n="Layouts">Contract</div>
@@ -146,9 +146,23 @@
                         <div data-i18n="Connections">Contact</div>
                     </a>
                 </li>
-               
+
             </ul>
         </li>
+
+        <!-- Logout -->
+        <li class="menu-item">
+            <a href="{{ route('logout') }}" class="menu-link"
+                onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">
+                <i class="menu-icon tf-icons bx bx-log-out"></i>
+                <div data-i18n="Logout">Logout</div>
+            </a>
+        </li>
+
+        <!-- Logout Form -->
+        <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
         <!-- Components -->
     </ul>
 </aside>

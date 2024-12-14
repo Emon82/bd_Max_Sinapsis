@@ -3,15 +3,15 @@
 @section('title', 'Add New Creative')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('backend/vendor/dropzone/dropzone.min.css') }}">
-    <style>
-        .portfolio-img-preview {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            margin: 5px;
-        }
-    </style>
+<link rel="stylesheet" href="{{ asset('backend/vendor/dropzone/dropzone.min.css') }}">
+<style>
+    .portfolio-img-preview {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin: 5px;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('creativity.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action='{{ route("creativity.store") }}' method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
@@ -79,29 +79,29 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            // Preview selected image
-            $('input[name="image"]').on('change', function() {
-                let file = this.files[0];
-                if (file) {
-                    let reader = new FileReader();
-                    reader.onload = function(e) {
-                        let img = `<img src="${e.target.result}" class="portfolio-img-preview" />`;
-                        $('.portfolio-preview-container').html(img);
-                    }
-                    reader.readAsDataURL(file);
+<script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        // Preview selected image
+        $('input[name="image"]').on('change', function() {
+            let file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    let img = `<img src="${e.target.result}" class="portfolio-img-preview" />`;
+                    $('.portfolio-preview-container').html(img);
                 }
-            });
+                reader.readAsDataURL(file);
+            }
         });
-    </script>
+    });
+</script>
 
-    <style>
-        .portfolio-preview-container {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-    </style>
+<style>
+    .portfolio-preview-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+</style>
 @endpush

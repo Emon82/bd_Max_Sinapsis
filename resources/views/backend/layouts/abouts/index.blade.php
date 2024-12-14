@@ -3,15 +3,15 @@
 @section('title', 'All Abouts ')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datatable/css/datatables.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <style>
-        .portfolio-img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-        }
-    </style>
+<link rel="stylesheet" href="{{ asset('backend/vendor/datatable/css/datatables.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<style>
+    .portfolio-img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+</style>
 @endpush
 
 @section('content')
@@ -23,7 +23,7 @@
                     <h4 class="card-title">All Abouts List</h4>
 
                     <div style="display: flex; justify-content: end; margin-bottom: 20px;">
-                        <a href="{{ route('about.create') }}" class="btn btn-primary">Add New About</a>
+                        <a href="{{ route('about.create') }}" style="background-color:#666633;color:white;" class="btn">Add New</a>
                     </div>
 
                     <div class="table-responsive mt-4 p-4">
@@ -49,111 +49,119 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('backend/vendor/datatable/js/datatables.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/sweetalert/sweetalert2@11.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="{{ asset('backend/vendor/datatable/js/datatables.min.js') }}"></script>
+<script src="{{ asset('backend/vendor/sweetalert/sweetalert2@11.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <script>
-       $(document).ready(function () {
-    let dTable = $('#data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        responsive: true,
-        ajax: "{{ route('about.index') }}",
-        columns: [
-            { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-            { data: 'content_EESS', name: 'content_EESS',
+<script>
+    $(document).ready(function() {
+        let dTable = $('#data-table').DataTable({
+            processing: true,
+            serverSide: true,
+            responsive: true,
+            ajax: "{{ route('about.index') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
+                {
+                    data: 'content_EESS',
+                    name: 'content_EESS',
 
-                render: function (data, type, row) {
-        if (data && data.length > 30) {
-            return `<span title="${data}">${data.substring(0, 30)}...</span>`;
-        }
-        return data;
-    }
-             },
+                    render: function(data, type, row) {
+                        if (data && data.length > 30) {
+                            return `<span title="${data}">${data.substring(0, 30)}...</span>`;
+                        }
+                        return data;
+                    }
+                },
 
-            { data: 'content_IINN', name: 'content_IINN'
-                , render: function (data, type, row) {
-        if (data && data.length > 30) {
-            return `<span title="${data}">${data.substring(0, 30)}...</span>`;
-        }
-        return data;
-    }
-             },
-            {
-                data: 'image',
-                name: 'image',
-                render: function (data, type, row) {
-                    return `<img src="${data}" alt="Creative Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
-                }
-            },
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false,
-                render: function (data, type, row) {
-                    return `
+                {
+                    data: 'content_IINN',
+                    name: 'content_IINN',
+                    render: function(data, type, row) {
+                        if (data && data.length > 30) {
+                            return `<span title="${data}">${data.substring(0, 30)}...</span>`;
+                        }
+                        return data;
+                    }
+                },
+                {
+                    data: 'image',
+                    name: 'image',
+                    render: function(data, type, row) {
+                        return `<img src="${data}" alt="Creative Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
+                    }
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row) {
+                        return `
                         <button onclick="editabout(${row.id})" class="btn btn-warning btn-sm">Edit</button>
                         <button onclick="deleteabout(${row.id})" class="btn btn-danger btn-sm">Delete</button>
                     `;
+                    }
                 }
-            }
-        ]
+            ]
+        });
     });
-});
 
 
-        function editabout(id) {
-            Swal.fire({
-                title: 'Edit Creativity',
-                text: 'Redirecting to edit page...',
-                icon: 'info',
-                confirmButtonText: 'OK'
-            }).then(() => {
-                window.location.href = `/update-about/${id}`;
-            });
-        }
+    function editabout(id) {
+        Swal.fire({
+            title: 'Edit Creativity',
+            text: 'Redirecting to edit page...',
+            icon: 'info',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            window.location.href = `/update-about/${id}`;
+        });
+    }
 
-        function deleteabout(id) {
-            const url = '{{ route('about.destroy', ':id') }}'.replace(':id', id);
-            const csrfToken = '{{ csrf_token() }}';
+    function deleteabout(id) {
+        const url = '{{ route("about.destroy", ":id") }}'.replace(':id', id);
+        const csrfToken = '{{ csrf_token() }}';
 
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "This action cannot be undone!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: url,
-                        type: 'DELETE',
-                        headers: { 'X-CSRF-TOKEN': csrfToken },
-                        success: function (response) {
-                            Swal.fire({
-                                title: 'Deleted!',
-                                text: response.message,
-                                icon: 'success',
-                                timer: 2000
-                            }).then(() => {
-                                $('#data-table').DataTable().ajax.reload();
-                            });
-                        },
-                        error: function (xhr) {
-                            Swal.fire({
-                                title: 'Error!',
-                                text: xhr.responseJSON?.message || 'Failed to delete record!',
-                                icon: 'error'
-                            });
-                        }
-                    });
-                }
-            });
-        }
-    </script>
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This action cannot be undone!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: response.message,
+                            icon: 'success',
+                            timer: 2000
+                        }).then(() => {
+                            $('#data-table').DataTable().ajax.reload();
+                        });
+                    },
+                    error: function(xhr) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: xhr.responseJSON?.message || 'Failed to delete record!',
+                            icon: 'error'
+                        });
+                    }
+                });
+            }
+        });
+    }
+</script>
 @endpush

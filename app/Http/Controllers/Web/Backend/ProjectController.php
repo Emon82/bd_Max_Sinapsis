@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\DB;
+
 
 class ProjectController extends Controller
 {
@@ -108,10 +110,45 @@ class ProjectController extends Controller
     /**
      * Remove the specified project from storage.
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $project = Project::findOrFail($id);
         $project->delete();
-    
+
         return response()->json(['message' => 'Project deleted successfully']);
+    }
+
+    /**
+     * Swap serial numbers between two projects.
+     */
+    public function swapSerialNumbers(Request $request, $id)
+    {
+        $request->validate([
+            'new_serial_number' => 'required|integer',
+        ]);
+
+        try {
+            $newPosition = $request->new_serial_number;
+
+            DB::beginTransaction();
+            $oldProject = Project::wherePosition($newPosition)->first();
+            $newProject = Project::wherePosition($id)->first();
+
+            $oldProject->update([
+                'position' => $id,
+            ]);
+
+            $newProject->update([
+                'position' => $newPosition,
+            ]);
+
+            // dd($newProject);
+            DB::commit();
+
+            return response()->json(['message' => 'Position successfully updated']);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['message' => $e->getMessage()], 400);
+        }
     }
 }

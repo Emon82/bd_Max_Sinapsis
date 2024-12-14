@@ -16,7 +16,7 @@
                     <h4 class="card-title"> Contracts List</h4>
 
                     <div style="display: flex; justify-content: end; margin-bottom: 20px;">
-                        <a href="{{ route('contract.create') }}" class="btn btn-primary">Add New</a>
+                        <a href="{{ route('contract.create') }}" style="background-color:#666633;color:white;" class="btn">Add New</a>
                     </div>
 
                     <div class="table-responsive mt-4 p-4">
@@ -69,46 +69,7 @@
 
 
 
-  function deleteProject(id) {
-    const url = '{{ route('projects.destroy', ':id') }}'.replace(':id', id);
-    const csrfToken = '{{ csrf_token() }}';
-
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "This action cannot be undone!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: url,
-                type: 'DELETE',
-                headers: { 'X-CSRF-TOKEN': csrfToken },
-                success: function(response) {
-                    Swal.fire({
-                        title: 'Deleted!',
-                        text: response.message,
-                        icon: 'success',
-                        timer: 2000
-                    }).then(() => {
-                        $('#data-table').DataTable().ajax.reload();
-                    });
-                },
-                error: function(xhr) {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: xhr.responseJSON?.message || 'Failed to delete project!',
-                        icon: 'error'
-                    });
-                }
-            });
-        }
-    });
-}
+ 
 
 
 
