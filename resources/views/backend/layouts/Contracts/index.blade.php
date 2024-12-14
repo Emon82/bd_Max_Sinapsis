@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', 'All Projects')
+@section('title', 'Contracts')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('backend/vendor/datatable/css/datatables.min.css') }}">
@@ -13,10 +13,10 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">All Projects List</h4>
+                    <h4 class="card-title"> Contracts List</h4>
 
                     <div style="display: flex; justify-content: end; margin-bottom: 20px;">
-                        <a href="{{ route('projects.create') }}" class="btn btn-primary">Add New</a>
+                        <a href="{{ route('contract.create') }}" class="btn btn-primary">Add New</a>
                     </div>
 
                     <div class="table-responsive mt-4 p-4">
@@ -24,13 +24,10 @@
                             <thead>
                                 <tr>
                                     <th>NO</th>
-                                    <!-- <th>Serial Number</th> -->
-                                    <th>Title</th>
-                                    <!-- <th>Title (IINN)</th> -->
-                                    <th>Location </th>
-                                    <!-- <th>Location (IINN)</th> -->
-                                    <th>Description</th>
-                                    <th>Actions</th>
+                                    <th>Email</th>
+                                    <th>Address </th>
+                                    <th>Mobile</th>
+                                    <th>Teliphone</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -51,58 +48,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
-        $(document).ready(function () {
-            let dTable = $('#data-table').DataTable({
-                processing: true,
-                serverSide: true,
-                responsive: true,
-                ajax: "{{ route('projects.index') }}",
-                columns: [
-                    { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                    // { data: 'serial_number', name: 'serial_number' },
-                    { data: 'title_EESS', name: 'title_EESS'    },
-                    { data: 'location_EESS', name: 'location_EESS'
-                        , render: function (data, type, row) {
-        if (data && data.length > 5) {
-            return `<span title="${data}">${data.substring(0, 5)}...</span>`;
-        }
-        return data;
-             },
-                     },
-                    { data: 'description_EESS', name: 'description_EESS'
-                        , render: function (data, type, row) {
-        if (data && data.length > 5) {
-            return `<span title="${data}">${data.substring(0, 15)}...</span>`;
-        }
-        return data;
-             },
-                     },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
-                        render: function (data, type, row) {
-                            return `
-                                <button onclick="editProject(${row.id})" class="btn btn-warning btn-sm">Edit</button>
-                                <button onclick="deleteProject(${row.id})" class="btn btn-danger btn-sm">Delete</button>
-                            `;
-                        }
-                    }
-                ]
-            });
-        });
+      let dTable = $('#data-table').DataTable({
+    processing: true,
+    serverSide: true,
+    responsive: true,
+    ajax: "{{ route('contract.index') }}",
+    columns: [
+        { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+        { data: 'email', name: 'email' },
+        { data: 'address', name: 'address', render: function(data) {
+                return data && data.length > 5 
+                    ? `<span title="${data}">${data.substring(0, 5)}...</span>` 
+                    : data;
+            }
+        },
+        { data: 'mobile', name: 'mobile' },
+        { data: 'teliphone', name: 'teliphone' },
+    ],
+});
 
-        function editProject(id) {
-            Swal.fire({
-                title: 'Edit Project',
-                text: 'Redirect to Edit Page',
-                icon: 'info',
-                confirmButtonText: 'OK'
-            }).then(() => {
-                window.location.href = `/projects/${id}/edit`;
-            });
-        }
+
 
   function deleteProject(id) {
     const url = '{{ route('projects.destroy', ':id') }}'.replace(':id', id);

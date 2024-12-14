@@ -76,7 +76,7 @@
 </li>
 
 <!-- <li class="menu-item {{ Request::routeIs('cms.contact') ? 'active' : '' }}">
-    <a class="menu-link" href="{{ route('contact.index') }}">
+    <a class="menu-link" href="{{ route('contract.index') }}">
         <i class="menu-icon tf-icons bx bxs-contact"></i>
         <div data-i18n="Layouts">Contract</div>
     </a>
@@ -102,8 +102,8 @@
         <!-- User -->
         <!-- <li class="menu-header small text-uppercase"><span class="menu-header-text">Contact Us</span></li>
 
-        <li class="menu-item {{ Request::routeIs('contact.index') ? 'active' : ' ' }}">
-            <a href="{{ route('contact.index') }}" class="menu-link">
+        <li class="menu-item {{ Request::routeIs('contract.index') ? 'active' : ' ' }}">
+            <a href="{{ route('contract.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-message-dots"></i>
                 <div data-i18n="Layouts">Messages</div>
             </a>
@@ -142,7 +142,7 @@
                     </a>
                 </li>
                 <li class="menu-item {{ Request::routeIs('mail.setting') ? 'active' : ' ' }}">
-                    <a href="{{route('mail.setting')}}" class="menu-link">
+                    <a href="{{route('contract.index')}}" class="menu-link">
                         <div data-i18n="Connections">Contact</div>
                     </a>
                 </li>

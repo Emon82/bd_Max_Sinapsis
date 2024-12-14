@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', 'Add New Project')
+@section('title', 'Add Contract')
 
 @push('styles')
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css">
@@ -18,94 +18,63 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Add New Project</h4>
+                    <h4 class="card-title">Add New Contract</h4>
 
-                    <form class="forms-sample" action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{ route('contract.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <!-- Title in Spanish -->
     <div class="form-group mb-3">
-        <label for="title_EESS" class="form-label required">Title (Spanish)</label>
-        <input type="text" id="title_EESS" name="title_EESS"
-               class="form-control @error('title_EESS') is-invalid @enderror"
-               placeholder="Enter Title in Spanish"
-               value="{{ old('title_EESS') }}">
-        @error('title_EESS')
+        <label for="email" class="form-label required">Email:</label>
+        <input type="text" id="title_EESS" name="email"
+               class="form-control @error('email') is-invalid @enderror"
+               placeholder="Enter email "
+               value="{{ old('email') }}">
+        @error('email')
             <div style="color: red;">{{ $message }}</div>
         @enderror
     </div>
 
     <!-- Title in English -->
     <div class="form-group mb-3">
-        <label for="title_IINN" class="form-label required">Title (English)</label>
-        <input type="text" id="title_IINN" name="title_IINN"
-               class="form-control @error('title_IINN') is-invalid @enderror"
+        <label for="address" class="form-label required">Address</label>
+        <input type="text" id="address" name="address"
+               class="form-control @error('address') is-invalid @enderror"
                placeholder="Enter Title in English"
-               value="{{ old('title_IINN') }}">
-        @error('title_IINN')
+               value="{{ old('address') }}">
+        @error('address')
             <div style="color: red;">{{ $message }}</div>
         @enderror
     </div>
 
-    <!-- Location in Spanish -->
+    <!-- Mobile -->
     <div class="form-group mb-3">
-        <label for="location_EESS" class="form-label required">Location (Spanish)</label>
-        <input type="text" id="location_EESS" name="location_EESS"
-               class="form-control @error('location_EESS') is-invalid @enderror"
+        <label for="mobile" class="form-label required">Mobile:</label>
+        <input type="text" id="mobile" name="mobile"
+               class="form-control @error('mobile') is-invalid @enderror"
                placeholder="Enter Location in Spanish"
-               value="{{ old('location_EESS') }}">
-        @error('location_EESS')
+               value="{{ old('mobile') }}">
+        @error('mobile')
             <div style="color: red;">{{ $message }}</div>
         @enderror
     </div>
 
     <!-- Location in English -->
     <div class="form-group mb-3">
-        <label for="location_IINN" class="form-label required">Location (English)</label>
-        <input type="text" id="location_IINN" name="location_IINN"
-               class="form-control @error('location_IINN') is-invalid @enderror"
+        <label for="teliphone" class="form-label required">Teliphone</label>
+        <input type="text" id="teliphone" name="teliphone"
+               class="form-control @error('teliphone') is-invalid @enderror"
                placeholder="Enter Location in English"
-               value="{{ old('location_IINN') }}">
-        @error('location_IINN')
+               value="{{ old('teliphone') }}">
+        @error('teliphone')
             <div style="color: red;">{{ $message }}</div>
         @enderror
     </div>
 
-    <!-- Description in Spanish -->
-    <div class="form-group mb-3">
-        <label for="description_EESS" class="form-label required">Description (Spanish)</label>
-        <textarea id="description_EESS" name="description_EESS"
-                  class="form-control @error('description_EESS') is-invalid @enderror"
-                  rows="4" placeholder="Enter Description in Spanish">{{ old('description_EESS') }}</textarea>
-        @error('description_EESS')
-            <div style="color: red;">{{ $message }}</div>
-        @enderror
-    </div>
-
-    <!-- Description in English -->
-    <div class="form-group mb-3">
-        <label for="description_IINN" class="form-label required">Description (English)</label>
-        <textarea id="description_IINN" name="description_IINN"
-                  class="form-control @error('description_IINN') is-invalid @enderror"
-                  rows="4" placeholder="Enter Description in English">{{ old('description_IINN') }}</textarea>
-        @error('description_IINN')
-            <div style="color: red;">{{ $message }}</div>
-        @enderror
-    </div>
-
-    <!-- Upload Images -->
-    <div class="form-group mb-3">
-        <label for="images" class="form-label">Project Images</label>
-        <input type="file" id="images" name="images[]" multiple class="form-control"
-               accept="image/*">
-        <small class="form-text text-muted">You can upload multiple images.</small>
-
-        <div class="mt-3 portfolio-preview-container"></div>
-    </div>
 
     <!-- Submit and Cancel Buttons -->
     <button type="submit" class="btn btn-primary me-2 mt-2">Submit</button>
-    <a href="{{ route('projects.index') }}" class="btn btn-secondary mt-2">Cancel</a>
+    <a href="{{ route('contract.index') }}" class="btn btn-secondary mt-2">Cancel</a>
 </form>
                 </div>
             </div>

@@ -73,8 +73,20 @@ Route::get('/about', [AboutController::class, 'index'])->name('about.index');
  Route::delete('/delete-about/{id}', [AboutController::class, 'destroy'])->name('about.destroy');
 
 
- // Route For Contacts
-// Route::get('/getcontact-address', [ContractController::class, 'index'])->name('contact.index');
+
+
+   //!Route for ContactUsController
+   Route::controller(ContactUsController::class)->group(function () {
+    Route::get('/getcontact-address','index')->name('contract.index');
+    Route::get('/create-contact','create')->name('contract.create');
+    Route::post('/store-contact','store')->name('contract.store');
+    Route::get('/update-contact-address/{id}','edit')->name('contract.edit');
+    Route::put('/update-contact-address/{id}','update')->name('contract.update');
+    Route::delete('/contact/destroy/{id}','destroy')->name('contract.destroy');
+});
+
+//  Route For Contacts
+// Route::get('/getcontact-address', [ContractController::class, 'index'])->name('contract.index');
 // Route::get('/create-contact', [ContractController::class, 'create'])->name('contact.create');
 // Route::post('/store-contact', [ContractController::class, 'store'])->name('contact.store');
 // Route::get('/update-contact-address/{id}', [ContractController::class, 'edit'])->name('contact.edit');
@@ -157,11 +169,7 @@ Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 
  
 
-    //!Route for ContactUsController
-    Route::controller(ContactUsController::class)->group(function () {
-        Route::get('/contact', 'index')->name('contact.index');
-        Route::delete('/contact/destroy/{id}', 'destroy')->name('contact.destroy');
-    });
+  
     //!Route for NewsletterListController
     Route::controller(NewsletterListController::class)->group(function () {
         Route::get('/newsletter', 'index')->name('newsletter.index');
