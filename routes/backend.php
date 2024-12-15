@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/store-portfolio', [PortfolioController::class, 'store'])->name('portfolios.store');
     Route::get('/update-portfolio/{id}', [PortfolioController::class, 'edit'])->name('portfolios.edit');
     Route::put('/update-portfolio/{id}', [PortfolioController::class, 'update'])->name('portfolios.update');
+    Route::post('/portfolio/{id}/swap-serial', [PortfolioController::class, 'swapSerialNumbersportfolio']);
     Route::delete('/delete-portfolio/{id}', [PortfolioController::class, 'destroy'])->name('portfolios.destroy');
 
 

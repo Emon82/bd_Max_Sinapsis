@@ -30,7 +30,8 @@
                         <table class="table table-hover" id="data-table">
                             <thead>
                                 <tr>
-                                    <th>NO</th>
+                                    <!-- <th>NO</th> -->
+                                    <th>Position</th>
                                     <th>Title </th>
                                     <!-- <th>Title (IINN)</th> -->
                                     <th>Sub Title</th>
@@ -73,9 +74,14 @@
                     });
                 }
             },
-            columns: [{
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex'
+            columns: [
+                // {
+                //     data: 'DT_RowIndex',
+                //     name: 'DT_RowIndex'
+                // },
+                {
+                    data: 'position',
+                    name: 'position'
                 },
                 {
                     data: 'title_EESS',
@@ -111,6 +117,7 @@
                         return `
                                 <button onclick="editPortfolio(${row.id})" class="btn btn-warning btn-sm">Edit</button>
                                 <button onclick="deletePortfolio(${row.id})" class="btn btn-danger btn-sm">Delete</button>
+                                  <button onclick="swapSerialNumbersPortfolio(${row.id})" class="btn btn-info btn-sm ml-2">Swap Serial</button>
                             `;
                     }
                 }
@@ -169,6 +176,62 @@
                         Swal.fire({
                             title: 'Error!',
                             text: xhr.responseJSON?.message || 'Failed to delete project!',
+                            icon: 'error'
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+
+    function swapSerialNumbersPortfolio(id) {
+        Swal.fire({
+            title: 'Swap Serial Number',
+            text: "Enter the new position to swap:",
+            input: 'number',
+            inputAttributes: {
+                min: 1
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Swap',
+            cancelButtonText: 'Cancel',
+            preConfirm: (newPosition) => {
+                if (newPosition === '' || isNaN(newPosition) || parseInt(newPosition) < 1) {
+                    Swal.showValidationMessage('Please enter a valid position.');
+                    return false;
+                }
+                return parseInt(newPosition);
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const newPosition = result.value;
+
+                const url = `/portfolio/${id}/swap-serial`;
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        new_serial_number: newPosition
+                    }),
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: response.message,
+                            icon: 'success'
+                        }).then(() => {
+                            $('#data-table').DataTable().ajax.reload();
+                        });
+                    },
+                    error: function(xhr) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: xhr.responseJSON?.message || 'Failed to swap serial numbers.',
                             icon: 'error'
                         });
                     }

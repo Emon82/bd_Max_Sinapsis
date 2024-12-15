@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
+            $table->integer('position')->nullable(); 
             $table->string('title_EESS');
             $table->string('title_IINN');
             $table->json('images'); // Store images as JSON

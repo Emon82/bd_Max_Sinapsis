@@ -8,7 +8,6 @@ use App\Models\Project;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
 
-
 class ProjectController extends Controller
 {
     /**
@@ -24,8 +23,9 @@ class ProjectController extends Controller
                 'location_EESS',
                 'location_IINN',
                 'description_EESS',
-                'description_IINN'
-            )->get()->map(function ($project, $key) {
+                'description_IINN',
+                'position'
+            )->orderBy('position', 'asc')->get()->map(function ($project, $key) {
                 $project->DT_RowIndex = $key + 1;
                 return $project;
             });
@@ -58,6 +58,9 @@ class ProjectController extends Controller
             'description_IINN' => 'required|string',
         ]);
 
+        $lastPosition = Project::max('position') ?? 0;
+        $newPosition = $lastPosition + 1;
+
         Project::create([
             'title_EESS' => $request->title_EESS,
             'title_IINN' => $request->title_IINN,
@@ -65,6 +68,7 @@ class ProjectController extends Controller
             'location_IINN' => $request->location_IINN,
             'description_EESS' => $request->description_EESS,
             'description_IINN' => $request->description_IINN,
+            'position' => $newPosition,
         ]);
 
         return redirect()->route('projects.index')->with('success', 'Project added successfully');
@@ -131,24 +135,26 @@ class ProjectController extends Controller
             $newPosition = $request->new_serial_number;
 
             DB::beginTransaction();
-            $oldProject = Project::wherePosition($newPosition)->first();
-            $newProject = Project::wherePosition($id)->first();
 
-            $oldProject->update([
-                'position' => $id,
-            ]);
+            // Get the projects based on the positions
+            $oldProject = Project::where('position', $newPosition)->first();
+            $newProject = Project::where('position', $id)->first();
 
-            $newProject->update([
-                'position' => $newPosition,
-            ]);
+            if (!$oldProject || !$newProject) {
+                DB::rollBack();
+                return response()->json(['message' => 'Projects not found'], 404);
+            }
 
-            // dd($newProject);
+            // Swap the positions
+            $oldProject->update(['position' => $id]);
+            $newProject->update(['position' => $newPosition]);
+
             DB::commit();
 
-            return response()->json(['message' => 'Position successfully updated']);
+            return response()->json(['message' => 'Positions successfully swapped']);
         } catch (\Exception $e) {
             DB::rollBack();
-            return response()->json(['message' => $e->getMessage()], 400);
+            return response()->json(['message' => 'An error occurred: ' . $e->getMessage()], 400);
         }
     }
 }

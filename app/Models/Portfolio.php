@@ -17,6 +17,7 @@ class Portfolio extends Model
         'sub_Title_IINN',
         'sub_desc_EESS',
         'sub_desc_IINN',
+        'position',
     ];
 
     protected $casts = [

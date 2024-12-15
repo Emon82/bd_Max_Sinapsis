@@ -23,7 +23,7 @@
                         <table class="table table-hover" id="data-table">
                             <thead>
                                 <tr>
-                                    <th>NO</th>
+                                    <th>No</th>
                                     <!-- <th>Serial Number</th> -->
                                     <th>Title</th>
                                     <!-- <th>Title (IINN)</th> -->
@@ -58,8 +58,8 @@
             responsive: true,
             ajax: "{{ route('projects.index') }}",
             columns: [{
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex'
+                    data: 'position',
+                    name: 'position'
                 },
                 // { data: 'serial_number', name: 'serial_number' },
                 {
@@ -93,9 +93,9 @@
                     searchable: false,
                     render: function(data, type, row) {
                         return `
+            <button onclick="swapSerialNumbers(${row.id})" class="btn btn-info btn-sm ml-2">Swap Serial</button>
             <button onclick="editProject(${row.id})" class="btn btn-warning btn-sm">Edit</button>
             <button onclick="deleteProject(${row.id})" class="btn btn-danger btn-sm">Delete</button>
-            <button onclick="swapSerialNumbers(${row.id})" class="btn btn-info btn-sm ml-2">Swap Serial</button>
         `;
                     }
                 }
