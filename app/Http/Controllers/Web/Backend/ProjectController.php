@@ -131,27 +131,30 @@ class ProjectController extends Controller
             'new_serial_number' => 'required|integer',
         ]);
 
-        try {
-            $newPosition = $request->new_serial_number;
+        $newPosition = $request->new_serial_number;
 
+        try {
             DB::beginTransaction();
 
-            // Get the projects based on the positions
-            $oldProject = Project::where('position', $newPosition)->first();
-            $newProject = Project::where('position', $id)->first();
+            // Fetch the current project and the project in the new position
+            $currentProject = Project::findOrFail($id);
+            $targetProject = Project::where('position', $newPosition)->first();
 
-            if (!$oldProject || !$newProject) {
+            // Check if the target position exists
+            if (!$targetProject) {
                 DB::rollBack();
-                return response()->json(['message' => 'Projects not found'], 404);
+                return response()->json(['message' => 'Target position not found'], 404);
             }
 
-            // Swap the positions
-            $oldProject->update(['position' => $id]);
-            $newProject->update(['position' => $newPosition]);
+            // Swap positions
+            $currentPosition = $currentProject->position;
+
+            $currentProject->update(['position' => $newPosition]);
+            $targetProject->update(['position' => $currentPosition]);
 
             DB::commit();
 
-            return response()->json(['message' => 'Positions successfully swapped']);
+            return response()->json(['message' => 'Positions successfully swapped'], 200);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['message' => 'An error occurred: ' . $e->getMessage()], 400);
