@@ -24,4 +24,5 @@ Route::get('/about', [ApiAboutController::class, 'index']);
 Route::get('/projects-list', [ApiProjectController::class, 'index']);
 Route::get('/get-all-portfolio', [ApiPortfolioController::class, 'index']);
 Route::get('/creativity', [ApiCreativityController::class, 'index']);
-Route::get('/get-messages', [ApiMessageController::class,'store']);
+Route::post('/send-messages', [ApiMessageController::class, 'store']);
+Route::get('/get-messages', [ApiMessageController::class, 'index']);

@@ -8,9 +8,16 @@ use App\Models\Message;
 
 class ApiMessageController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        $Message = Message::all();
+        return response()->json($Message);
+    }
     public function store(Request $request)
     {
         // Validate the request
+      
         $validated = $request->validate([
             'full_name' => 'required|string',
             'telephone' => 'required|string',

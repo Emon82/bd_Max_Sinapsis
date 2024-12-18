@@ -16,7 +16,7 @@ class ApiAboutController extends Controller
                 'id' => $about->id,
                 'content_EESS' => $about->content_EESS,
                 'content_IINN' => $about->content_IINN,
-                'image' => $about->image,
+                'image' => url('storage/' . $about->image),
                 'updated_at' => $about->updated_at,
             ];
         });
