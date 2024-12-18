@@ -44,73 +44,75 @@
                             @enderror
                         </div>
 
-                        <!-- Sub-title (English) -->
+                        <!-- Sub-title (English) with CKEditor -->
                         <div class="form-group mb-3">
                             <label>Sub-title (English)</label>
-                            <input type="text" class="form-control @error('sub_title_EESS') is-invalid @enderror"
-                                name="sub_title_EESS" value="{{ old('sub_title_EESS', $creative->sub_title_EESS) }}" required>
+                            <textarea id="sub_title_EESS" class="form-control @error('sub_title_EESS') is-invalid @enderror"
+                                name="sub_title_EESS">{{ old('sub_title_EESS', $creative->sub_title_EESS) }}</textarea>
                             @error('sub_title_EESS')
                             <div class="text-danger mt-1">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <!-- Sub-title (Other Language) -->
+                        <!-- Sub-title (Other Language) with CKEditor -->
                         <div class="form-group mb-3">
                             <label>Sub-title (Other Language)</label>
-                            <input type="text" class="form-control @error('sub_title_IINN') is-invalid @enderror"
-                                name="sub_title_IINN" value="{{ old('sub_title_IINN', $creative->sub_title_IINN) }}" required>
+                            <textarea id="sub_title_IINN" class="form-control @error('sub_title_IINN') is-invalid @enderror"
+                                name="sub_title_IINN">{{ old('sub_title_IINN', $creative->sub_title_IINN) }}</textarea>
                             @error('sub_title_IINN')
                             <div class="text-danger mt-1">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <!-- Description (English) -->
+                        <!-- Content (English) with CKEditor -->
                         <div class="form-group mb-3">
                             <label>Content (English)</label>
-                            <textarea class="form-control @error('content_EESS') is-invalid @enderror"
-                                name="content_EESS" rows="5">{{ old('content_EESS', $creative->content_EESS) }}</textarea>
+                            <textarea id="content_EESS" class="form-control @error('content_EESS') is-invalid @enderror"
+                                name="content_EESS">{{ old('content_EESS', $creative->content_EESS) }}</textarea>
                             @error('content_EESS')
                             <div class="text-danger mt-1">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <!-- Description (Other Language) -->
+                        <!-- Content (Other Language) with CKEditor -->
                         <div class="form-group mb-3">
                             <label>Content (Other Language)</label>
-                            <textarea class="form-control @error('content_IINN') is-invalid @enderror"
-                                name="content_IINN" rows="5">{{ old('content_IINN', $creative->content_IINN) }}</textarea>
+                            <textarea id="content_IINN" class="form-control @error('content_IINN') is-invalid @enderror"
+                                name="content_IINN">{{ old('content_IINN', $creative->content_IINN) }}</textarea>
                             @error('content_IINN')
                             <div class="text-danger mt-1">{{ $message }}</div>
                             @enderror
                         </div>
 
+                        <!-- Image -->
+                        <div class="form-group mb-3">
+                            <label for="image">Image</label>
+                            <div class="mb-2">
+                                @if($creative->image)
+                                <img src="{{ asset('storage/' . $creative->image) }}" alt="Current Image" class="img-thumbnail" style="width: 100px; height: auto;">
+                                @endif
+                            </div>
+                            <input type="file" name="image" id="image" class="form-control dropify">
+                        </div>
 
+                        <!-- Image Position -->
                         <div class="form-group mb-3">
                             <label>Image Position</label>
                             <textarea class="form-control @error('image_position') is-invalid @enderror"
-                                name="image_position" rows="5">{{ old('image_position', $creative->image_position) }}</textarea>
+                                name="image_position" rows="3">{{ old('image_position', $creative->image_position) }}</textarea>
                             @error('image_position')
                             <div class="text-danger mt-1">{{ $message }}</div>
                             @enderror
                         </div>
 
-                        <!-- Images -->
-                        <label for="image">Image</label>
-                        <div class="mb-2">
-                            <img src="{{ asset('storage/' . $creative->image) }}" alt="Current Image" class="img-thumbnail" style="width: 100px; height: auto;">
-                        </div>
-                        <input type="file" name="image" id="image" class="form-control">
+                        <!-- Submit and Cancel Buttons -->
+                        <button type="submit" class="btn btn-primary mt-3">Update</button>
+                        <a href="{{ route('creativity.index') }}" class="btn btn-secondary mt-3">Cancel</a>
+                    </form>
                 </div>
-
-                <!-- Submit and Cancel Buttons -->
-                <button type="submit" class="btn btn-primary mt-3">Update</button>
-                <a href="{{ route('creativity.index') }}" class="btn btn-secondary mt-3">Cancel</a>
-
-                </form>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 @endsection
@@ -121,11 +123,13 @@
 <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
 
 <script>
+    // Initialize CKEditor for Sub-title and Content fields
+    ClassicEditor.create(document.querySelector('#sub_title_EESS'));
+    ClassicEditor.create(document.querySelector('#sub_title_IINN'));
+    ClassicEditor.create(document.querySelector('#content_EESS'));
+    ClassicEditor.create(document.querySelector('#content_IINN'));
+
+    // Initialize Dropify for Image Upload
     $('.dropify').dropify();
-
-    $(document).ready(function() {
-        $('.select2').select2();
-    });
 </script>
-
 @endpush
