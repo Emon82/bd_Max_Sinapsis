@@ -71,7 +71,7 @@
                     name: 'location_EESS',
                     render: function(data, type, row) {
                         if (data && data.length > 5) {
-                            return `<span title="${data}">${data.substring(0, 5)}...</span>`;
+                            return `<span title="${data}">${data.substring(0, 20)}...</span>`;
                         }
                         return data;
                     },
@@ -81,7 +81,7 @@
                     name: 'description_EESS',
                     render: function(data, type, row) {
                         if (data && data.length > 5) {
-                            return `<span title="${data}">${data.substring(0, 15)}...</span>`;
+                            return `<span title="${data}">${data.substring(0, 25)}...</span>`;
                         }
                         return data;
                     },

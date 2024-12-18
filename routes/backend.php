@@ -25,68 +25,74 @@ use App\Http\Controllers\Web\Backend\CreativityController;
 use App\Http\Controllers\Web\Backend\AboutController;
 use App\Http\Controllers\Web\Backend\ContractController;
 
+
+
+
+// Route For services
+Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
+Route::post('services/store', [ServiceController::class, 'store'])->name('services.store');
+Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('edit');
+Route::put('/update/{id}', [ServiceController::class, 'update'])->name('services.update');
+Route::post('/services/{id}/swap-serial', [ServiceController::class, 'swapSerialNumbers']);
+Route::delete('/destroy/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
+// Route For Projects
+
+Route::get('/projects-list', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/create-project', [ProjectController::class, 'create'])->name('projects.create');
+Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
+Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+Route::put('/update-project/{id}', [ProjectController::class, 'update'])->name('projects.update');
+Route::post('/projects/{id}/swap-serial', [ProjectController::class, 'swapSerialNumbers']);
+// Route::put('/update-serial-number/{id}', [ProjectController::class, 'update'])->name('projects.update');
+Route::delete('/remove-project/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+
+
+// Route For Portfolio
+Route::get('/get-all-portfolio', [PortfolioController::class, 'index'])->name('portfolios.index');
+Route::get('/create-portfolio', [PortfolioController::class, 'create'])->name('portfolios.create');
+Route::post('/store-portfolio', [PortfolioController::class, 'store'])->name('portfolios.store');
+Route::get('/update-portfolio/{id}', [PortfolioController::class, 'edit'])->name('portfolios.edit');
+Route::put('/update-portfolio/{id}', [PortfolioController::class, 'update'])->name('portfolios.update');
+Route::post('/portfolio/{id}/swap-serial', [PortfolioController::class, 'swapSerialNumbersportfolio']);
+Route::delete('/delete-portfolio/{id}', [PortfolioController::class, 'destroy'])->name('portfolios.destroy');
+
+
+
+// Route For Creativity
+Route::get('/creativity', [CreativityController::class, 'index'])->name('creativity.index');
+Route::get('/create-creativity', [CreativityController::class, 'create'])->name('creativity.create');
+Route::post('/store-creativity', [CreativityController::class, 'store'])->name('creativity.store');
+Route::get('/update-creativity/{id}', [CreativityController::class, 'edit'])->name('creativity.edit');
+Route::put('/update-creativity/{id}', [CreativityController::class, 'update'])->name('creativity.update');
+Route::delete('/delete-creativity/{id}', [CreativityController::class, 'destroy'])->name('creativity.destroy');
+
+
+// Route For Abouts
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+Route::get('/create-about', [AboutController::class, 'create'])->name('about.create');
+Route::post('/store-about', [AboutController::class, 'store'])->name('about.store');
+Route::get('/update-about/{id}', [AboutController::class, 'edit'])->name('about.edit');
+Route::put('/update-about/{id}', [AboutController::class, 'update'])->name('about.update');
+Route::delete('/delete-about/{id}', [AboutController::class, 'destroy'])->name('about.destroy');
+
+
+
+
+//!Route for ContactUsController
+Route::controller(ContactUsController::class)->group(function () {
+    Route::get('/getcontact-address', 'index')->name('contract.index');
+    Route::get('/create-contact', 'create')->name('contract.create');
+    Route::post('/store-contact', 'store')->name('contract.store');
+    Route::get('/update-contact-address/{id}', 'edit')->name('contract.edit');
+    Route::put('/update-contact-address/{id}', 'update')->name('contract.update');
+    Route::delete('/contact/destroy/{id}', 'destroy')->name('contract.destroy');
+});
+
+
 Route::middleware('auth')->group(function () {
 
-    // Route For services
-    Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
-    Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
-    Route::post('services/store', [ServiceController::class, 'store'])->name('services.store');
-    Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('edit');
-    Route::put('/update/{id}', [ServiceController::class, 'update'])->name('services.update');
-    Route::delete('/destroy/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
-
-    // Route For Projects
-
-    Route::get('/projects-list', [ProjectController::class, 'index'])->name('projects.index');
-    Route::get('/create-project', [ProjectController::class, 'create'])->name('projects.create');
-    Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
-    Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
-    Route::put('/update-project/{id}', [ProjectController::class, 'update'])->name('projects.update');
-    Route::post('/projects/{id}/swap-serial', [ProjectController::class, 'swapSerialNumbers']);
-    // Route::put('/update-serial-number/{id}', [ProjectController::class, 'update'])->name('projects.update');
-    Route::delete('/remove-project/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
-
-
-    // Route For Portfolio
-    Route::get('/get-all-portfolio', [PortfolioController::class, 'index'])->name('portfolios.index');
-    Route::get('/create-portfolio', [PortfolioController::class, 'create'])->name('portfolios.create');
-    Route::post('/store-portfolio', [PortfolioController::class, 'store'])->name('portfolios.store');
-    Route::get('/update-portfolio/{id}', [PortfolioController::class, 'edit'])->name('portfolios.edit');
-    Route::put('/update-portfolio/{id}', [PortfolioController::class, 'update'])->name('portfolios.update');
-    Route::post('/portfolio/{id}/swap-serial', [PortfolioController::class, 'swapSerialNumbersportfolio']);
-    Route::delete('/delete-portfolio/{id}', [PortfolioController::class, 'destroy'])->name('portfolios.destroy');
-
-
-
-    // Route For Creativity
-    Route::get('/creativity', [CreativityController::class, 'index'])->name('creativity.index');
-    Route::get('/create-creativity', [CreativityController::class, 'create'])->name('creativity.create');
-    Route::post('/store-creativity', [CreativityController::class, 'store'])->name('creativity.store');
-    Route::get('/update-creativity/{id}', [CreativityController::class, 'edit'])->name('creativity.edit');
-    Route::put('/update-creativity/{id}', [CreativityController::class, 'update'])->name('creativity.update');
-    Route::delete('/delete-creativity/{id}', [CreativityController::class, 'destroy'])->name('creativity.destroy');
-
-
-    // Route For Abouts
-    Route::get('/about', [AboutController::class, 'index'])->name('about.index');
-    Route::get('/create-about', [AboutController::class, 'create'])->name('about.create');
-    Route::post('/store-about', [AboutController::class, 'store'])->name('about.store');
-    Route::get('/update-about/{id}', [AboutController::class, 'edit'])->name('about.edit');
-    Route::put('/update-about/{id}', [AboutController::class, 'update'])->name('about.update');
-    Route::delete('/delete-about/{id}', [AboutController::class, 'destroy'])->name('about.destroy');
-
-
-
-
-    //!Route for ContactUsController
-    Route::controller(ContactUsController::class)->group(function () {
-        Route::get('/getcontact-address', 'index')->name('contract.index');
-        Route::get('/create-contact', 'create')->name('contract.create');
-        Route::post('/store-contact', 'store')->name('contract.store');
-        Route::get('/update-contact-address/{id}', 'edit')->name('contract.edit');
-        Route::put('/update-contact-address/{id}', 'update')->name('contract.update');
-        Route::delete('/contact/destroy/{id}', 'destroy')->name('contract.destroy');
-    });
 
     //  Route For Contacts
     // Route::get('/getcontact-address', [ContractController::class, 'index'])->name('contract.index');

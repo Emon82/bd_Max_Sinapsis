@@ -79,6 +79,12 @@ class PortfolioController extends Controller
         return redirect()->route('portfolios.index')->with('success', 'Portfolio created successfully.');
     }
 
+
+    public function create()
+    {
+        return view('backend.layouts.portfolios.create');
+    }
+
     /**
      * Update the specified portfolio in storage.
      */

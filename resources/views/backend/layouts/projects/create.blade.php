@@ -93,15 +93,7 @@
                             @enderror
                         </div>
 
-                        <!-- Upload Images -->
-                        <div class="form-group mb-3">
-                            <label for="images" class="form-label">Project Images</label>
-                            <input type="file" id="images" name="images[]" multiple class="form-control"
-                                accept="image/*">
-                            <small class="form-text text-muted">You can upload multiple images.</small>
-
-                            <div class="mt-3 portfolio-preview-container"></div>
-                        </div>
+                        
 
                         <!-- Submit and Cancel Buttons -->
                         <button type="submit" class="btn btn-primary me-2 mt-2">Submit</button>

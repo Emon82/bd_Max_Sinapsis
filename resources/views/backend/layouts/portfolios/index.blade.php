@@ -115,9 +115,10 @@
                     searchable: false,
                     render: function(data, type, row) {
                         return `
+                         <button onclick="swapSerialNumbersPortfolio(${row.id})" class="btn btn-info btn-sm ml-2">Swap Serial</button>
                                 <button onclick="editPortfolio(${row.id})" class="btn btn-warning btn-sm">Edit</button>
                                 <button onclick="deletePortfolio(${row.id})" class="btn btn-danger btn-sm">Delete</button>
-                                  <button onclick="swapSerialNumbersPortfolio(${row.id})" class="btn btn-info btn-sm ml-2">Swap Serial</button>
+                                 
                             `;
                     }
                 }

@@ -18,6 +18,7 @@ class Service extends Model
         'title_iinn',
         'description_eess',
         'description_iinn',
-       
+        'position',
+
     ];
 }

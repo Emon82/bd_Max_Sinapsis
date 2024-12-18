@@ -3,8 +3,8 @@
 @section('title', 'Contracts')
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('backend/vendor/datatable/css/datatables.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<link rel="stylesheet" href="{{ asset('backend/vendor/datatable/css/datatables.min.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 @endpush
 
 @section('content')
@@ -43,36 +43,41 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('backend/vendor/datatable/js/datatables.min.js') }}"></script>
-    <script src="{{ asset('backend/vendor/sweetalert/sweetalert2@11.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="{{ asset('backend/vendor/datatable/js/datatables.min.js') }}"></script>
+<script src="{{ asset('backend/vendor/sweetalert/sweetalert2@11.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <script>
-      let dTable = $('#data-table').DataTable({
-    processing: true,
-    serverSide: true,
-    responsive: true,
-    ajax: "{{ route('contract.index') }}",
-    columns: [
-        { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
-        { data: 'email', name: 'email' },
-        { data: 'address', name: 'address', render: function(data) {
-                return data && data.length > 5 
-                    ? `<span title="${data}">${data.substring(0, 5)}...</span>` 
-                    : data;
-            }
-        },
-        { data: 'mobile', name: 'mobile' },
-        { data: 'teliphone', name: 'teliphone' },
-    ],
-});
+<script>
+    let dTable = $('#data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "{{ route('contract.index') }}",
+        columns: [{
+                data: 'DT_RowIndex',
+                name: 'DT_RowIndex',
+                orderable: false,
+                searchable: false
+            },
+            {
+                data: 'email',
+                name: 'email'
+            },
+            {
+                data: 'teliphone',
+                name: 'teliphone'
+            },
 
-
-
- 
-
-
-
-    </script>
+            {
+                data: 'address',
+                name: 'address',
+            },
+            {
+                data: 'mobile',
+                name: 'mobile'
+            },
+        ],
+    });
+</script>
 
 @endpush
