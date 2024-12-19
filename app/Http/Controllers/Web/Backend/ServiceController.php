@@ -22,7 +22,7 @@ class ServiceController extends Controller
                 'title_iinn',
                 'description_eess',
                 'description_iinn',
-'position'
+                'position'
             )->orderBy('position', 'asc')->get()->map(function ($service, $key) {
                 $service->DT_RowIndex = $key + 1;
                 return $service;

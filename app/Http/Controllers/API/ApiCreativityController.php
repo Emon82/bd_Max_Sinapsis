@@ -14,6 +14,7 @@ class ApiCreativityController extends Controller
         $creatives = Creative::all()->map(function ($creative) {
             return [
                 'id' => $creative->id,
+                'position' => $creative->position,
                 'title_EESS' => $creative->title_EESS,
                 'title_IINN' => $creative->title_IINN,
                 'sub_title_EESS' => $creative->sub_title_EESS,

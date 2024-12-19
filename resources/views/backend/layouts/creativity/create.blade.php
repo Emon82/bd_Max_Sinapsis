@@ -30,62 +30,64 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('creativity.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <!-- English Title -->
                         <div class="form-group">
                             <label for="title_en">English Title</label>
-                            <input type="text" name="title_en" class="form-control" placeholder="Enter English Title" required>
+                            <input type="text" name="title_EESS" class="form-control" placeholder="Enter English Title" required>
                         </div>
 
                         <!-- Spanish Title -->
                         <div class="form-group">
                             <label for="title_es">Spanish Title</label>
-                            <input type="text" name="title_es" class="form-control" placeholder="Enter Spanish Title" required>
+                            <input type="text" name="title_IINN" class="form-control" placeholder="Enter Spanish Title" required>
                         </div>
 
                         <!-- English Subtitle -->
                         <div class="form-group">
                             <label for="subtitle_en">English Subtitle</label>
-                            <input type="text" name="subtitle_en" class="form-control" placeholder="Enter English Subtitle">
+                            <textarea id="subtitle_en" name="sub_title_EESS" class="form-control" rows="2" placeholder="Enter English Subtitle"></textarea>
                         </div>
 
                         <!-- Spanish Subtitle -->
                         <div class="form-group">
                             <label for="subtitle_es">Spanish Subtitle</label>
-                            <input type="text" name="subtitle_es" class="form-control" placeholder="Enter Spanish Subtitle">
+                            <textarea id="subtitle_es" name="sub_title_IINN" class="form-control" rows="2" placeholder="Enter Spanish Subtitle"></textarea>
                         </div>
 
                         <!-- Content (English) with CKEditor -->
                         <div class="form-group">
                             <label for="content_en">English Content</label>
-                            <textarea id="content_en" name="content_en" class="form-control" rows="4" placeholder="Enter English Content"></textarea>
+                            <textarea id="content_en" name="content_EESS" class="form-control" rows="4" placeholder="Enter English Content"></textarea>
                         </div>
 
                         <!-- Content (Spanish) with CKEditor -->
                         <div class="form-group">
                             <label for="content_es">Spanish Content</label>
-                            <textarea id="content_es" name="content_es" class="form-control" rows="4" placeholder="Enter Spanish Content"></textarea>
+                            <textarea id="content_es" name="content_IINN" class="form-control" rows="4" placeholder="Enter Spanish Content"></textarea>
                         </div>
 
                         <!-- Image Upload -->
                         <div class="form-group">
                             <label for="image">Images</label>
-                            <input type="file" id="image" name="image[]" class="form-control" accept="image/*" multiple>
-                            <small class="form-text text-muted">Select multiple images for the item.</small>
-                            <div class="img-preview-container"></div>
+                            <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                            <small class="form-text text-muted">Select an image for the item.</small>
                         </div>
 
                         <!-- Image Position -->
                         <div class="form-group">
                             <label for="image_position">Image Position</label>
-                            <input type="text" name="image_position" class="form-control" placeholder="Enter Image Position">
+                            <select name="image_position" class="form-control">
+                                <option value="Left">Left</option>
+                                <option value="Right">Right</option>
+                            </select>
                         </div>
 
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-success mt-3">Add Item</button>
-                        <a href="{{ route('items.index') }}" class="btn btn-secondary mt-3">Back</a>
+                        <a href="{{ route('creativity.index') }}" class="btn btn-secondary mt-3">Back</a>
                     </form>
                 </div>
             </div>
@@ -102,21 +104,20 @@
     // Initialize CKEditor for Content fields
     ClassicEditor.create(document.querySelector('#content_en'));
     ClassicEditor.create(document.querySelector('#content_es'));
+    ClassicEditor.create(document.querySelector('#subtitle_en'));
+    ClassicEditor.create(document.querySelector('#subtitle_es'));
 
+    // Image Preview (Optional)
     $(document).ready(function() {
-        // Handle Multiple Image Preview
-        $('input[type="file"][name="image[]"]').on('change', function() {
-            let files = this.files;
-            $('.img-preview-container').html(''); // Clear previous images
-            if (files) {
-                $.each(files, function(i, file) {
-                    let reader = new FileReader();
-                    reader.onload = function(e) {
-                        let imgTag = `<img src="${e.target.result}" class="img-preview" />`;
-                        $('.img-preview-container').append(imgTag);
-                    }
-                    reader.readAsDataURL(file);
-                });
+        $('input[type="file"][name="image"]').on('change', function() {
+            let file = this.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    let imgTag = `<img src="${e.target.result}" class="img-preview" />`;
+                    $('.img-preview-container').html(imgTag);
+                }
+                reader.readAsDataURL(file);
             }
         });
     });

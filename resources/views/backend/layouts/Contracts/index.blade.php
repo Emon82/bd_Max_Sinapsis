@@ -28,6 +28,7 @@
                                     <th>Address </th>
                                     <th>Mobile</th>
                                     <th>Teliphone</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -76,6 +77,15 @@
                 data: 'mobile',
                 name: 'mobile'
             },
+            {
+                data: null,
+                name: 'action',
+                orderable: false,
+                searchable: false,
+                render: function(data, type, row) {
+                    return `<a href="{{ route('contract.edit', '') }}/${row.id}" class="btn btn-warning btn-sm">Edit</a>`;
+                }
+            }
         ],
     });
 </script>

@@ -30,7 +30,7 @@ class ContractController extends Controller
     public function edit($id)
     {
         $contact = Contract::findOrFail($id);
-        return view('backend.layouts.settings.edit_contact', compact('contact'));
+        return view('backend.layouts.contracts.edit', compact('contact'));
     }
 
     public function update(Request $request, $id)

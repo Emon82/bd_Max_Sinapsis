@@ -96,13 +96,12 @@
                         </div>
 
                         <!-- Image Position -->
-                        <div class="form-group mb-3">
-                            <label>Image Position</label>
-                            <textarea class="form-control @error('image_position') is-invalid @enderror"
-                                name="image_position" rows="3">{{ old('image_position', $creative->image_position) }}</textarea>
-                            @error('image_position')
-                            <div class="text-danger mt-1">{{ $message }}</div>
-                            @enderror
+                        <div class="form-group">
+                            <label for="image_position">Image Position</label>
+                            <select name="image_position" class="form-control">
+                                <option value="Left" {{ $creative->image_position == 'Left' ? 'selected' : '' }}>Left</option>
+                                <option value="Right" {{ $creative->image_position == 'Right' ? 'selected' : '' }}>Right</option>
+                            </select>
                         </div>
 
                         <!-- Submit and Cancel Buttons -->

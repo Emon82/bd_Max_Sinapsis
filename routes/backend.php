@@ -66,6 +66,7 @@ Route::get('/create-creativity', [CreativityController::class, 'create'])->name(
 Route::post('/store-creativity', [CreativityController::class, 'store'])->name('creativity.store');
 Route::get('/update-creativity/{id}', [CreativityController::class, 'edit'])->name('creativity.edit');
 Route::put('/update-creativity/{id}', [CreativityController::class, 'update'])->name('creativity.update');
+Route::post('/creativity/{id}/swap-serial', [CreativityController::class, 'swapSerialNumbersportfolio']);
 Route::delete('/delete-creativity/{id}', [CreativityController::class, 'destroy'])->name('creativity.destroy');
 
 
@@ -86,7 +87,7 @@ Route::controller(ContactUsController::class)->group(function () {
     Route::get('/create-contact', 'create')->name('contract.create');
     Route::post('/store-contact', 'store')->name('contract.store');
     Route::get('/update-contact-address/{id}', 'edit')->name('contract.edit');
-    Route::put('/update-contact-address/{id}', 'update')->name('contract.update');
+    Route::put('/contact-address/{id}', 'update')->name('contract.update');
     Route::delete('/contact/destroy/{id}', 'destroy')->name('contract.destroy');
 });
 

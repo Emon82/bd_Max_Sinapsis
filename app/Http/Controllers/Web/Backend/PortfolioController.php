@@ -85,6 +85,15 @@ class PortfolioController extends Controller
         return view('backend.layouts.portfolios.create');
     }
 
+
+
+
+    public function edit(string $id)
+    {
+        $portfolio = Portfolio::findOrFail($id);
+        return view('backend.layouts.portfolios.edit', compact('portfolio'));
+    }
+
     /**
      * Update the specified portfolio in storage.
      */

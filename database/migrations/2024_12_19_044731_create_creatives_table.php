@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('creatives', function (Blueprint $table) {
             $table->id();
             $table->string('title_EESS')->index();
+            $table->integer('position')->nullable();
             $table->string('title_IINN')->index();
             $table->string('sub_title_EESS')->nullable()->index();
             $table->string('sub_title_IINN')->nullable()->index();

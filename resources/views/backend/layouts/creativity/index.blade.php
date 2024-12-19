@@ -54,61 +54,52 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        let dTable = $('#data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            responsive: true,
-            ajax: "{{ route('creativity.index') }}",
-            columns: [{
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex'
+    $('#data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "{{ route('creativity.index') }}",
+        columns: [{
+                data: 'position',
+                name: 'position'
+            },
+            {
+                data: 'title_EESS',
+                name: 'title_EESS',
+                render: function(data, type, row) {
+                    if (data && data.length > 5) {
+                        return `<span title="${data}">${data.substring(0, 30)}...</span>`;
+                    }
+                    return data;
                 },
-                {
-                    data: 'title_EESS',
-                    name: 'title_EESS',
-                    render: function(data, type, row) {
-                        if (data && data.length > 5) {
-                            return `<span title="${data}">${data.substring(0, 30)}...</span>`;
-                        }
-                        return data;
-                    },
-
+            },
+            {
+                data: 'content_EESS',
+                name: 'content_EESS',
+                render: function(data, type, row) {
+                    if (data && data.length > 5) {
+                        return `<span title="${data}">${data.substring(0, 30)}...</span>`;
+                    }
+                    return data;
                 },
-
-                {
-                    data: 'content_EESS',
-                    name: 'content_EESS'
-
-                        ,
-                    render: function(data, type, row) {
-                        if (data && data.length > 5) {
-                            return `<span title="${data}">${data.substring(0, 30)}...</span>`;
-                        }
-                        return data;
-                    },
-                },
-                {
-                    data: 'image',
-                    name: 'image',
-                    render: function(data, type, row) {
+            },
+            {
+                data: 'image',
+                name: 'image',
+                render: function(data) {
+                    if (data) {
                         return `<img src="${data}" alt="Creative Image" class="img-thumbnail" style="width: 100px; height: auto;">`;
                     }
-                },
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searchable: false,
-                    render: function(data, type, row) {
-                        return `
-                        <button onclick="editCreativity(${row.id})" class="btn btn-warning btn-sm">Edit</button>
-                        <button onclick="deleteCreativity(${row.id})" class="btn btn-danger btn-sm">Delete</button>
-                    `;
-                    }
+                    return 'No Image';
                 }
-            ]
-        });
+            },
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
+            }
+        ]
     });
 
 
@@ -158,6 +149,60 @@
                         Swal.fire({
                             title: 'Error!',
                             text: xhr.responseJSON?.message || 'Failed to delete record!',
+                            icon: 'error'
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    function swapSerialNumbers(id) {
+        Swal.fire({
+            title: 'Swap Serial Number',
+            text: "Enter the new position to swap:",
+            input: 'number',
+            inputAttributes: {
+                min: 1
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Swap',
+            cancelButtonText: 'Cancel',
+            preConfirm: (newPosition) => {
+                if (newPosition === '' || isNaN(newPosition) || parseInt(newPosition) < 1) {
+                    Swal.showValidationMessage('Please enter a valid position.');
+                    return false;
+                }
+                return parseInt(newPosition);
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const newPosition = result.value;
+                const url = `/creativity/${id}/swap-serial`;
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        new_serial_number: newPosition
+                    }),
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: response.message,
+                            icon: 'success'
+                        }).then(() => {
+                            $('#data-table').DataTable().ajax.reload();
+                        });
+                    },
+                    error: function(xhr) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: xhr.responseJSON?.message || 'Failed to swap serial numbers.',
                             icon: 'error'
                         });
                     }

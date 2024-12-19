@@ -18,7 +18,7 @@ class ContactUsController extends Controller
                 $contract = Contract::select(['id', 'email', 'mobile', 'teliphone', 'address'])
                     ->orderBy('id', 'desc')
                     ->first();
-    
+
                 if ($contract) {
                     // Return contract wrapped in a collection
                     return DataTables::of(collect([$contract]))
@@ -31,7 +31,7 @@ class ContactUsController extends Controller
                 return response()->json(['error' => $e->getMessage()], 500);
             }
         }
-    
+
         return view('backend.layouts.contracts.index');
     }
 
@@ -59,23 +59,24 @@ class ContactUsController extends Controller
 
     public function edit($id)
     {
-        $contact = Contract::findOrFail($id);
-        return view('backend.layouts.contracts.edit', compact('contact'));
+        $contract  = Contract::findOrFail($id);
+        return view('backend.layouts.contracts.edit', compact('contract'));
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'mobile' => 'required|string',
-            'telephone' => 'required|string',
-            'address' => 'required|string',
+        $contract = Contract::findOrFail($id);
+
+        $contract->update([
+            'email' => $request->email,
+            'address' => $request->address,
+            'mobile' => $request->mobile,
+            'teliphone' => $request->teliphone,
         ]);
 
-        $contact = Contract::findOrFail($id);
-        $contact->update($request->all());
-        return back()->with('success', 'Contact updated successfully.');
+        return redirect()->route('contract.index')->with('success', 'Contract updated successfully!');
     }
+
 
     public function destroy($id)
     {

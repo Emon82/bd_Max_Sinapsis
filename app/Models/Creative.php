@@ -9,16 +9,18 @@ class Creative extends Model
 {
     use HasFactory;
 
+    protected $table = 'creatives';
 
+    // Specify the fields that are mass assignable
     protected $fillable = [
-
         'title_EESS',
         'title_IINN',
         'sub_title_EESS',
         'sub_title_IINN',
-        'image',
         'content_EESS',
         'content_IINN',
+        'image',
         'image_position',
+        'position',
     ];
 }
